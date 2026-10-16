@@ -18,8 +18,8 @@
       </a>
 
       <ul class="nav-links" id="nav-links" role="list">
-        <li><a href="#details"  data-nav="details"></a></li>
         <li><a href="#gallery"  data-nav="gallery"></a></li>
+        <li><a href="#details"  data-nav="details"></a></li>
         <li><a href="#schedule" data-nav="schedule"></a></li>
         <li><a href="#attire"   data-nav="attire"></a></li>
         <li><a href="#venue"    data-nav="venue"></a></li>
@@ -57,14 +57,31 @@
       <div class="hero-rings">
         <img src="images/rings.png" alt="Wedding Rings" class="hero-rings-img" />
       </div>
-      <a href="#details" class="hero-cta" aria-label="Details">&#8595;</a>
+      <a href="#gallery" class="hero-cta" aria-label="Moments Together">&#8595;</a>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════
+       PHOTO GALLERY CAROUSEL
+  ══════════════════════════════════════════════════════════ -->
+  <section id="gallery" class="section section-gallery section-alt" aria-labelledby="gallery-title">
+    <div class="container text-center">
+      <h2 class="section-title" id="gallery-title"></h2>
+      <p class="section-intro" id="gallery-subtitle"></p>
+    </div>
+    <div class="carousel-container" id="carousel-container">
+      <button class="carousel-nav-btn carousel-prev" id="carousel-prev" aria-label="Previous photo">&#8249;</button>
+      <div class="carousel-viewport" id="carousel-viewport" tabindex="0" role="region" aria-label="Photo carousel">
+        <div class="carousel-track" id="carousel-track"></div>
+      </div>
+      <button class="carousel-nav-btn carousel-next" id="carousel-next" aria-label="Next photo">&#8250;</button>
     </div>
   </section>
 
   <!-- ══════════════════════════════════════════════════════
        EVENT DETAILS
   ══════════════════════════════════════════════════════════ -->
-  <section id="details" class="section section-details section-alt" aria-labelledby="details-title">
+  <section id="details" class="section section-details" aria-labelledby="details-title">
     <div class="container">
       <h2 class="section-title" id="details-title">The Weekend</h2>
       <div class="details-grid" id="details-grid" role="list">
@@ -93,23 +110,6 @@
           <p>Goodbye and thank you for celebrating this unforgettable weekend with us!</p>
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- ══════════════════════════════════════════════════════
-       PHOTO GALLERY CAROUSEL
-  ══════════════════════════════════════════════════════════ -->
-  <section id="gallery" class="section section-gallery" aria-labelledby="gallery-title">
-    <div class="container text-center">
-      <h2 class="section-title" id="gallery-title"></h2>
-      <p class="section-intro" id="gallery-subtitle"></p>
-    </div>
-    <div class="carousel-container" id="carousel-container">
-      <button class="carousel-nav-btn carousel-prev" id="carousel-prev" aria-label="Previous photo">&#8249;</button>
-      <div class="carousel-viewport" id="carousel-viewport" tabindex="0" role="region" aria-label="Photo carousel">
-        <div class="carousel-track" id="carousel-track"></div>
-      </div>
-      <button class="carousel-nav-btn carousel-next" id="carousel-next" aria-label="Next photo">&#8250;</button>
     </div>
   </section>
 

@@ -1129,8 +1129,8 @@ function initReveal() {
 function renderAll() {
   renderHero();
   renderNav();
-  renderDetails();
   renderGallery();
+  renderDetails();
   renderSchedule();
   renderAttire();
   renderVenue();
