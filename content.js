@@ -52,8 +52,8 @@ const CONTENT = {
 
   /* ── Hero ───────────────────────────────────────────────── */
   hero: {
-    backgroundImage:       "https://castellopetrata.it/wp-content/uploads/2023/10/image00002-scaled.jpeg",
-    backgroundImageMobile: "https://castellopetrata.it/wp-content/uploads/2023/10/image00002-scaled.jpeg",
+    backgroundImage:       "images/hero_bg.jpeg",
+    backgroundImageMobile: "images/hero_bg.jpeg",
     overlayOpacity:        0.45,
     venueLabel: {
       ru: "Castello Petrata · Ассизи, Умбрия, Италия",
@@ -458,7 +458,7 @@ const CONTENT = {
       directionsLabel: { ru: "Маршрут к отелю", en: "Directions to Hotel", he: "הוראות הגעה למלון" },
     },
     mapsEmbedUrl: "https://maps.google.com/maps?q=Castello+Petrata,+Localita+Petrata+22,+06081+Assisi+PG,+Italy&output=embed&z=14",
-    photo: "https://castellopetrata.it/wp-content/uploads/2023/05/wedding.jpg",
+    photo: "images/venue_wedding.jpg",
   },
 
   /* ── Travel / Getting There ─────────────────────────────── */
