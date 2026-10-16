@@ -153,7 +153,7 @@ function renderHero() {
   const amp = t(couple.ampersand);
 
   setHtml('hero-names',
-    `<span class="hero-name hero-name-first">${n1}</span><span class="ampersand">${amp}</span><span class="hero-name hero-name-second">${n2}</span>`
+    `${n1} <span class="ampersand">${amp}</span> ${n2}`
   );
   document.title = `${n1} & ${n2} · ${t(date.display)}`;
 
