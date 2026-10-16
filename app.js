@@ -227,6 +227,7 @@ let galleryCarouselState = {
   animationId: null,
   isPaused: false,
   isDragging: false,
+  isTouching: false,
   startX: 0,
   startScrollLeft: 0,
   pauseTimeout: null,
@@ -259,11 +260,12 @@ function renderGallery() {
   clearTimeout(galleryCarouselState.pauseTimeout);
   galleryCarouselState.isPaused = false;
   galleryCarouselState.isDragging = false;
+  galleryCarouselState.isTouching = false;
 
   track.innerHTML = '';
 
   const baseImages = gallery.images;
-  const totalSets = 4; // 4 sets for seamless, unbreakable infinite scrolling
+  const totalSets = 3; // 3 sets for seamless, flicker-free infinite scrolling
   const allImages = [];
 
   for (let s = 0; s < totalSets; s++) {
@@ -276,7 +278,7 @@ function renderGallery() {
     const card = document.createElement('div');
     card.className = 'carousel-card';
     card.innerHTML = `
-      <img src="${encodeURI(imgData.src)}" alt="${t(imgData.alt)}" loading="lazy" draggable="false" />
+      <img src="${encodeURI(imgData.src)}" alt="${t(imgData.alt)}" decoding="async" draggable="false" />
     `;
     track.appendChild(card);
   });
@@ -286,66 +288,75 @@ function renderGallery() {
 
 function setupCarouselEngine(viewport, track, prevBtn, nextBtn, totalSets) {
   const state = galleryCarouselState;
-  const speed = 0.65; // gentle, elegant speed in px per frame
+  const speed = 0.65; // gentle drift speed in px per frame
 
-  // Position initial scroll in the middle (Set 2 start)
+  // Position initial scroll at the start of Set 2 (middle set)
   function initPosition() {
     const singleSetWidth = track.scrollWidth / totalSets;
     if (singleSetWidth > 0 && viewport.scrollLeft === 0) {
-      viewport.scrollLeft = singleSetWidth * 1.5;
+      viewport.scrollLeft = singleSetWidth;
     }
   }
   requestAnimationFrame(initPosition);
-  setTimeout(initPosition, 150);
-  setTimeout(initPosition, 600);
+  setTimeout(initPosition, 100);
+  setTimeout(initPosition, 400);
 
   function pauseAutoScroll(durationMs = 2500) {
     state.isPaused = true;
     clearTimeout(state.pauseTimeout);
     if (durationMs > 0) {
       state.pauseTimeout = setTimeout(() => {
-        if (!state.isDragging) state.isPaused = false;
+        if (!state.isDragging && !state.isTouching) state.isPaused = false;
       }, durationMs);
     }
   }
 
-  // Truly infinite wrap listener: operates on ALL scroll causes (auto, touch, drag, wheel, button)
-  let isWrapping = false;
-  const onScroll = () => {
-    if (isWrapping) return;
-    const singleSetWidth = track.scrollWidth / totalSets;
-    if (!singleSetWidth || singleSetWidth < 50) return;
-
-    if (viewport.scrollLeft >= singleSetWidth * 2.5) {
-      isWrapping = true;
-      viewport.scrollLeft -= singleSetWidth;
-      if (state.isDragging) state.startScrollLeft -= singleSetWidth;
-      isWrapping = false;
-    } else if (viewport.scrollLeft <= singleSetWidth * 0.5) {
-      isWrapping = true;
-      viewport.scrollLeft += singleSetWidth;
-      if (state.isDragging) state.startScrollLeft += singleSetWidth;
-      isWrapping = false;
-    }
-  };
-  viewport.addEventListener('scroll', onScroll, { passive: true });
-
-  // Auto-scroll loop
+  // Smooth continuous auto-scroll with safe boundary wrapping
   function step() {
-    if (!state.isPaused && !state.isDragging) {
+    if (!state.isPaused && !state.isDragging && !state.isTouching) {
       viewport.scrollLeft += speed;
+      const singleSetWidth = track.scrollWidth / totalSets;
+      if (singleSetWidth > 0) {
+        if (viewport.scrollLeft >= singleSetWidth * 2) {
+          viewport.scrollLeft -= singleSetWidth;
+        } else if (viewport.scrollLeft <= 0) {
+          viewport.scrollLeft += singleSetWidth;
+        }
+      }
     }
     state.animationId = requestAnimationFrame(step);
   }
   state.animationId = requestAnimationFrame(step);
 
+  // Re-center ONLY when user scroll has completely stopped (prevents mobile tile drop/flicker)
+  let idleDebounce = null;
+  const onScroll = () => {
+    state.isPaused = true;
+    clearTimeout(idleDebounce);
+    idleDebounce = setTimeout(() => {
+      const singleSetWidth = track.scrollWidth / totalSets;
+      if (!singleSetWidth || singleSetWidth < 50) return;
+
+      if (viewport.scrollLeft >= singleSetWidth * 2) {
+        viewport.scrollLeft -= singleSetWidth;
+      } else if (viewport.scrollLeft <= singleSetWidth * 0.2) {
+        viewport.scrollLeft += singleSetWidth;
+      }
+
+      if (!state.isDragging && !state.isTouching) {
+        state.isPaused = false;
+      }
+    }, 300);
+  };
+  viewport.addEventListener('scroll', onScroll, { passive: true });
+
   // Mouse hover pause
   const onMouseEnter = () => { state.isPaused = true; };
-  const onMouseLeave = () => { if (!state.isDragging) state.isPaused = false; };
+  const onMouseLeave = () => { if (!state.isDragging && !state.isTouching) state.isPaused = false; };
   viewport.addEventListener('mouseenter', onMouseEnter);
   viewport.addEventListener('mouseleave', onMouseLeave);
 
-  // Mouse drag support
+  // Mouse drag support for desktop
   const onMouseDown = e => {
     state.isDragging = true;
     state.isPaused = true;
@@ -372,19 +383,18 @@ function setupCarouselEngine(viewport, track, prevBtn, nextBtn, totalSets) {
   window.addEventListener('mousemove', onMouseMove);
   window.addEventListener('mouseup', onMouseUp);
 
-  // Touch support for mobile phones
+  // Touch support for mobile phones - purely native & fluid
   const onTouchStart = () => {
-    state.isPaused = true;
-  };
-  const onTouchMove = () => {
+    state.isTouching = true;
     state.isPaused = true;
   };
   const onTouchEnd = () => {
+    state.isTouching = false;
     pauseAutoScroll(2500);
   };
   viewport.addEventListener('touchstart', onTouchStart, { passive: true });
-  viewport.addEventListener('touchmove', onTouchMove, { passive: true });
   viewport.addEventListener('touchend', onTouchEnd, { passive: true });
+  viewport.addEventListener('touchcancel', onTouchEnd, { passive: true });
 
   // Navigation Arrow Buttons
   function getStepDistance() {
@@ -413,10 +423,11 @@ function setupCarouselEngine(viewport, track, prevBtn, nextBtn, totalSets) {
     window.removeEventListener('mousemove', onMouseMove);
     window.removeEventListener('mouseup', onMouseUp);
     viewport.removeEventListener('touchstart', onTouchStart);
-    viewport.removeEventListener('touchmove', onTouchMove);
     viewport.removeEventListener('touchend', onTouchEnd);
+    viewport.removeEventListener('touchcancel', onTouchEnd);
     if (prevBtn) prevBtn.removeEventListener('click', onPrevClick);
     if (nextBtn) nextBtn.removeEventListener('click', onNextClick);
+    clearTimeout(idleDebounce);
   };
 }
 
