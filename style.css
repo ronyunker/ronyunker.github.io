@@ -128,6 +128,18 @@ ul, ol {
   letter-spacing: 0.04em;
 }
 
+[dir="rtl"] .hero-names .hero-name {
+  letter-spacing: 0.05em;
+}
+
+[dir="rtl"] .hero-names .hero-name-first {
+  margin-inline-end: -0.05em;
+}
+
+[dir="rtl"] .hero-names .ampersand {
+  margin: 0 0.4em;
+}
+
 [dir="rtl"] .schedule-list::before {
   left: auto;
   right: 89px;
@@ -573,11 +585,13 @@ h1, h2, h3, h4 {
 }
 
 .hero-names {
+  display: inline-flex;
+  align-items: baseline;
+  justify-content: center;
   font-family: var(--font-heading);
-  font-size: clamp(2rem, 5.5vw, 4.8rem);
+  font-size: clamp(2.4rem, 6vw, 4.8rem);
   font-weight: 300;
   text-transform: uppercase;
-  letter-spacing: 0.18em;
   color: var(--color-white);
   margin-bottom: 0.35rem;
   white-space: nowrap;
@@ -587,16 +601,26 @@ h1, h2, h3, h4 {
   text-shadow: 0 2px 20px rgba(0, 0, 0, 0.35);
 }
 
-/* Calligraphic flowing script for conjunctions & connectors */
+.hero-names .hero-name {
+  letter-spacing: 0.18em;
+  display: inline-block;
+}
+
+/* Eliminate trailing letter-spacing of the first name so space before ampersand matches space after */
+.hero-names .hero-name-first {
+  margin-inline-end: -0.18em;
+}
+
+/* Classic balanced Renaissance italic ampersand */
 .hero-names .ampersand,
 .ampersand {
-  font-family: var(--font-script);
+  font-family: 'Cormorant Garamond', Georgia, serif;
   font-size: 1.15em;
   font-style: italic;
   font-weight: 400;
-  text-transform: lowercase;
-  color: rgba(255, 255, 255, 0.9);
-  margin: 0 0.15em;
+  text-transform: none;
+  color: rgba(255, 255, 255, 0.92);
+  margin: 0 0.5em;
   letter-spacing: normal;
   display: inline-block;
   vertical-align: baseline;
@@ -2183,10 +2207,29 @@ h1, h2, h3, h4 {
   }
 
   .hero-names {
-    font-size: clamp(1.75rem, 6.5vw, 3rem);
-    letter-spacing: 0.14em;
+    font-size: clamp(2.2rem, 7.5vw, 3.5rem);
     padding: 0 0.25rem;
     white-space: nowrap;
+  }
+
+  .hero-names .hero-name {
+    letter-spacing: 0.14em;
+  }
+
+  .hero-names .hero-name-first {
+    margin-inline-end: -0.14em;
+  }
+
+  .hero-names .ampersand {
+    margin: 0 0.42em;
+  }
+
+  [dir="rtl"] .hero-names .hero-name {
+    letter-spacing: 0.04em;
+  }
+
+  [dir="rtl"] .hero-names .hero-name-first {
+    margin-inline-end: -0.04em;
   }
 
   .hero-tagline {
@@ -2431,9 +2474,29 @@ h1, h2, h3, h4 {
 
   /* Hero */
   .hero-names {
-    font-size: clamp(1.35rem, 6vw, 2.1rem);
-    letter-spacing: 0.08em;
+    font-size: clamp(1.85rem, 8.2vw, 2.6rem);
     white-space: nowrap;
+    padding: 0 0.25rem;
+  }
+
+  .hero-names .hero-name {
+    letter-spacing: 0.10em;
+  }
+
+  .hero-names .hero-name-first {
+    margin-inline-end: -0.10em;
+  }
+
+  .hero-names .ampersand {
+    margin: 0 0.36em;
+  }
+
+  [dir="rtl"] .hero-names .hero-name {
+    letter-spacing: 0.03em;
+  }
+
+  [dir="rtl"] .hero-names .hero-name-first {
+    margin-inline-end: -0.03em;
   }
 
   .hero-date {
