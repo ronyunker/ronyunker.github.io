@@ -229,7 +229,6 @@ let galleryCarouselState = {
   isDragging: false,
   startX: 0,
   startScrollLeft: 0,
-  hasMoved: false,
   pauseTimeout: null,
   cleanupListeners: null,
 };
@@ -264,7 +263,7 @@ function renderGallery() {
   track.innerHTML = '';
 
   const baseImages = gallery.images;
-  const totalSets = 3; // 3 sets for seamless infinite scrolling
+  const totalSets = 4; // 4 sets for seamless, unbreakable infinite scrolling
   const allImages = [];
 
   for (let s = 0; s < totalSets; s++) {
@@ -276,48 +275,29 @@ function renderGallery() {
   allImages.forEach((imgData) => {
     const card = document.createElement('div');
     card.className = 'carousel-card';
-    card.setAttribute('role', 'button');
-    card.setAttribute('tabindex', '0');
-    card.setAttribute('aria-label', `${t(imgData.alt)} (${imgData.originalIndex + 1})`);
-
     card.innerHTML = `
       <img src="${encodeURI(imgData.src)}" alt="${t(imgData.alt)}" loading="lazy" draggable="false" />
-      <div class="carousel-card-overlay" aria-hidden="true">
-        <span class="carousel-zoom-icon">&#128269;</span>
-      </div>
     `;
-
-    const handleSelect = () => {
-      if (galleryCarouselState.hasMoved) return;
-      openLightbox(imgData.originalIndex, baseImages);
-    };
-
-    card.addEventListener('click', handleSelect);
-    card.addEventListener('keydown', e => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        handleSelect();
-      }
-    });
-
     track.appendChild(card);
   });
 
-  initLightbox();
-  setupCarouselEngine(viewport, prevBtn, nextBtn);
+  setupCarouselEngine(viewport, track, prevBtn, nextBtn, totalSets);
 }
 
-function setupCarouselEngine(viewport, prevBtn, nextBtn) {
+function setupCarouselEngine(viewport, track, prevBtn, nextBtn, totalSets) {
   const state = galleryCarouselState;
   const speed = 0.65; // gentle, elegant speed in px per frame
 
-  // Set initial scroll to middle set so users can immediately scroll either direction
-  requestAnimationFrame(() => {
-    const singleSetWidth = viewport.scrollWidth / 3;
-    if (singleSetWidth > 0) {
-      viewport.scrollLeft = singleSetWidth;
+  // Position initial scroll in the middle (Set 2 start)
+  function initPosition() {
+    const singleSetWidth = track.scrollWidth / totalSets;
+    if (singleSetWidth > 0 && viewport.scrollLeft === 0) {
+      viewport.scrollLeft = singleSetWidth * 1.5;
     }
-  });
+  }
+  requestAnimationFrame(initPosition);
+  setTimeout(initPosition, 150);
+  setTimeout(initPosition, 600);
 
   function pauseAutoScroll(durationMs = 2500) {
     state.isPaused = true;
@@ -329,18 +309,31 @@ function setupCarouselEngine(viewport, prevBtn, nextBtn) {
     }
   }
 
-  // Animation frame auto-scroll loop
+  // Truly infinite wrap listener: operates on ALL scroll causes (auto, touch, drag, wheel, button)
+  let isWrapping = false;
+  const onScroll = () => {
+    if (isWrapping) return;
+    const singleSetWidth = track.scrollWidth / totalSets;
+    if (!singleSetWidth || singleSetWidth < 50) return;
+
+    if (viewport.scrollLeft >= singleSetWidth * 2.5) {
+      isWrapping = true;
+      viewport.scrollLeft -= singleSetWidth;
+      if (state.isDragging) state.startScrollLeft -= singleSetWidth;
+      isWrapping = false;
+    } else if (viewport.scrollLeft <= singleSetWidth * 0.5) {
+      isWrapping = true;
+      viewport.scrollLeft += singleSetWidth;
+      if (state.isDragging) state.startScrollLeft += singleSetWidth;
+      isWrapping = false;
+    }
+  };
+  viewport.addEventListener('scroll', onScroll, { passive: true });
+
+  // Auto-scroll loop
   function step() {
     if (!state.isPaused && !state.isDragging) {
-      const singleSetWidth = viewport.scrollWidth / 3;
-      if (singleSetWidth > 0) {
-        viewport.scrollLeft += speed;
-        if (viewport.scrollLeft >= singleSetWidth * 2) {
-          viewport.scrollLeft -= singleSetWidth;
-        } else if (viewport.scrollLeft <= 0) {
-          viewport.scrollLeft += singleSetWidth;
-        }
-      }
+      viewport.scrollLeft += speed;
     }
     state.animationId = requestAnimationFrame(step);
   }
@@ -356,7 +349,6 @@ function setupCarouselEngine(viewport, prevBtn, nextBtn) {
   const onMouseDown = e => {
     state.isDragging = true;
     state.isPaused = true;
-    state.hasMoved = false;
     state.startX = e.pageX;
     state.startScrollLeft = viewport.scrollLeft;
     viewport.classList.add('is-dragging');
@@ -365,20 +357,7 @@ function setupCarouselEngine(viewport, prevBtn, nextBtn) {
   const onMouseMove = e => {
     if (!state.isDragging) return;
     const dx = e.pageX - state.startX;
-    if (Math.abs(dx) > 6) state.hasMoved = true;
     viewport.scrollLeft = state.startScrollLeft - dx;
-
-    // Handle seamless infinite boundaries while dragging
-    const singleSetWidth = viewport.scrollWidth / 3;
-    if (singleSetWidth > 0) {
-      if (viewport.scrollLeft >= singleSetWidth * 2) {
-        viewport.scrollLeft -= singleSetWidth;
-        state.startScrollLeft -= singleSetWidth;
-      } else if (viewport.scrollLeft <= 0) {
-        viewport.scrollLeft += singleSetWidth;
-        state.startScrollLeft += singleSetWidth;
-      }
-    }
   };
 
   const onMouseUp = () => {
@@ -393,13 +372,11 @@ function setupCarouselEngine(viewport, prevBtn, nextBtn) {
   window.addEventListener('mousemove', onMouseMove);
   window.addEventListener('mouseup', onMouseUp);
 
-  // Touch support for phones
+  // Touch support for mobile phones
   const onTouchStart = () => {
     state.isPaused = true;
-    state.hasMoved = false;
   };
   const onTouchMove = () => {
-    state.hasMoved = true;
     state.isPaused = true;
   };
   const onTouchEnd = () => {
@@ -417,13 +394,11 @@ function setupCarouselEngine(viewport, prevBtn, nextBtn) {
 
   const onPrevClick = () => {
     pauseAutoScroll(3000);
-    const dist = getStepDistance();
-    viewport.scrollBy({ left: -dist, behavior: 'smooth' });
+    viewport.scrollBy({ left: -getStepDistance(), behavior: 'smooth' });
   };
   const onNextClick = () => {
     pauseAutoScroll(3000);
-    const dist = getStepDistance();
-    viewport.scrollBy({ left: dist, behavior: 'smooth' });
+    viewport.scrollBy({ left: getStepDistance(), behavior: 'smooth' });
   };
 
   if (prevBtn) prevBtn.addEventListener('click', onPrevClick);
@@ -431,6 +406,7 @@ function setupCarouselEngine(viewport, prevBtn, nextBtn) {
 
   // Store cleanup function for re-rendering on lang switch
   state.cleanupListeners = () => {
+    viewport.removeEventListener('scroll', onScroll);
     viewport.removeEventListener('mouseenter', onMouseEnter);
     viewport.removeEventListener('mouseleave', onMouseLeave);
     viewport.removeEventListener('mousedown', onMouseDown);
