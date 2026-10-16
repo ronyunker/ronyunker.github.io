@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Ron & Dana wedding – 23 May 2027" />
+  <title>Ron & Dana wedding</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,600&family=Italianno&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Frank+Ruhl+Libre:wght@300;400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="#hero" class="nav-logo" id="nav-logo" aria-label="Back to top">
+        <img src="images/rd_monogram_nav.png" alt="Ron & Dana Monogram" class="nav-monogram-img" />
+      </a>
+
+      <ul class="nav-links" id="nav-links" role="list">
+        <li><a href="#details"  data-nav="details"></a></li>
+        <li><a href="#schedule" data-nav="schedule"></a></li>
+        <li><a href="#attire"   data-nav="attire"></a></li>
+        <li><a href="#venue"    data-nav="venue"></a></li>
+        <li><a href="#travel"   data-nav="travel"></a></li>
+        <li><a href="#rsvp"     data-nav="rsvp" class="nav-rsvp"></a></li>
+        <li><a href="#gifts"    data-nav="gifts"></a></li>
+      </ul>
+
+      <div class="nav-right">
+        <div class="lang-switcher" role="group" aria-label="Language / Язык / שפה">
+          <button class="lang-btn" data-lang="ru" aria-pressed="false">RU</button>
+          <button class="lang-btn" data-lang="en" aria-pressed="true">EN</button>
+          <button class="lang-btn" data-lang="he" aria-pressed="false">עב</button>
+        </div>
+
+        <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ══════════════════════════════════════════════════════
+       HERO
+  ══════════════════════════════════════════════════════════ -->
+  <section id="hero" class="section-hero" aria-label="Hero">
+    <div class="hero-overlay" id="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-names-block">
+        <h1 class="hero-names" id="hero-names"></h1>
+      </div>
+      <p class="hero-date"      id="hero-date"></p>
+      <p class="hero-venue"     id="hero-venue"></p>
+      <div class="countdown"    id="countdown" aria-live="polite"></div>
+      <div class="hero-rings">
+        <img src="https://ilnostromatrimonio-griante.my.canva.site/_assets/media/acfe4eef2a3fdd9053a9725f1b2b51e0.png" onerror="this.onerror=null;this.src='images/rings.png';" alt="Wedding Rings" class="hero-rings-img" />
+      </div>
+      <a href="#details" class="hero-cta" aria-label="Details">&#8595;</a>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════
+       EVENT DETAILS
+  ══════════════════════════════════════════════════════════ -->
+  <section id="details" class="section section-details section-alt" aria-labelledby="details-title">
+    <div class="container">
+      <h2 class="section-title" id="details-title">The Weekend</h2>
+      <div class="details-grid" id="details-grid" role="list">
+        <div class="detail-card detail-card-1 visible" role="listitem">
+          <span class="detail-icon" aria-hidden="true">🏨</span>
+          <h3>Saturday 22 – Arrival to Hotel Cenacolo</h3>
+          <p>Check-in at Hotel Cenacolo (Assisi) from <span class="detail-em">2:00 PM (14:00)</span></p>
+          <p>Guest accommodation & room settlement</p>
+          <p>Evening relaxation and welcome gathering</p>
+          <p>Dress code: festive chic</p>
+        </div>
+        <div class="detail-card detail-card-2 visible" role="listitem">
+          <span class="detail-icon" aria-hidden="true">💍</span>
+          <h3>Sunday 23 – Wedding Day at Castello Petrata</h3>
+          <p>Breakfast at Hotel Cenacolo (<span class="detail-em">7:30–10:00 AM</span>)</p>
+          <p><span class="detail-em">4:30 PM (16:30)</span> – Shuttle service from Hotel Cenacolo to Castello Petrata</p>
+          <p>5:00 PM Gathering · 5:30 PM Ceremony · 6:00 PM Aperitivo · 8:00 PM Dinner · 10:00 PM Party</p>
+          <p>Return shuttles to Hotel Cenacolo provided throughout the night</p>
+          <p>Dress code: formal / festive attire</p>
+        </div>
+        <div class="detail-card detail-card-3 visible" role="listitem">
+          <span class="detail-icon" aria-hidden="true">🌅</span>
+          <h3>Monday 24 – Check-out & Farewell</h3>
+          <p>Breakfast at Hotel Cenacolo (<span class="detail-em">7:30–10:00 AM</span>)</p>
+          <p>Hotel check-out at <span class="detail-em">10:00 AM (10:00)</span></p>
+          <p>Goodbye and thank you for celebrating this unforgettable weekend with us!</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════
+       SCHEDULE
+  ══════════════════════════════════════════════════════════ -->
+  <section id="schedule" class="section section-schedule" aria-labelledby="schedule-title">
+    <div class="container">
+      <h2 class="section-title" id="schedule-title">Wedding Programme</h2>
+      <p class="schedule-subtitle" id="schedule-subtitle">Sunday, May 23, 2027 · Wedding Day</p>
+      <div class="schedule-layout">
+        <div class="schedule-timeline-wrap">
+          <ol class="schedule-list" id="schedule-list">
+            <li class="schedule-item visible">
+              <span class="schedule-time">16:30</span>
+              <div class="schedule-body">
+                <p class="schedule-label">Shuttle to the Wedding</p>
+                <p class="schedule-note">Departure from Hotel Cenacolo to Castello Petrata</p>
+              </div>
+            </li>
+            <li class="schedule-item visible">
+              <span class="schedule-time">17:00</span>
+              <div class="schedule-body">
+                <p class="schedule-label">Gathering & Welcome Drinks</p>
+                <p class="schedule-note">Welcome drinks on the panoramic terrace at Castello Petrata</p>
+              </div>
+            </li>
+            <li class="schedule-item visible">
+              <span class="schedule-time">17:30</span>
+              <div class="schedule-body">
+                <p class="schedule-label">Wedding Ceremony</p>
+                <p class="schedule-note">In the gardens of Castello Petrata</p>
+              </div>
+            </li>
+            <li class="schedule-item visible">
+              <span class="schedule-time">18:00</span>
+              <div class="schedule-body">
+                <p class="schedule-label">Aperitivo & Cocktails</p>
+                <p class="schedule-note">Cocktails and Italian finger food by the pool and olive grove</p>
+              </div>
+            </li>
+            <li class="schedule-item visible">
+              <span class="schedule-time">20:00</span>
+              <div class="schedule-body">
+                <p class="schedule-label">Gala Dinner</p>
+                <p class="schedule-note">Festive wedding dinner</p>
+              </div>
+            </li>
+            <li class="schedule-item visible">
+              <span class="schedule-time">22:00</span>
+              <div class="schedule-body">
+                <p class="schedule-label">Party & Dancing!</p>
+                <p class="schedule-note">DJ, open bar & dancing · Return shuttles to Hotel Cenacolo throughout the night</p>
+              </div>
+            </li>
+          </ol>
+        </div>
+        <div class="schedule-photo-wrap reveal" id="schedule-photo-wrap">
+          <img id="schedule-officiant-img" class="schedule-officiant-img" alt="Wedding Officiant" loading="lazy" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════
+       ATTIRE / DRESS CODE (Formal Garden Party)
+  ══════════════════════════════════════════════════════════ -->
+  <section id="attire" class="section section-attire section-alt" aria-labelledby="attire-title">
+    <div class="container">
+      <div class="attire-header">
+        <span class="meta-eyebrow attire-eyebrow" id="attire-eyebrow">DRESS CODE</span>
+        <h2 class="section-title" id="attire-title"></h2>
+        <p class="attire-vibe" id="attire-vibe"></p>
+        <p class="attire-subtitle" id="attire-subtitle"></p>
+        <p class="section-intro attire-intro" id="attire-intro"></p>
+      </div>
+
+      <!-- Guidelines Grid (Ladies & Men) -->
+      <div class="attire-cards-grid" id="attire-cards-grid" role="list"></div>
+
+      <!-- Color Palette Inspiration -->
+      <div class="attire-palette-container reveal" id="attire-palette-container">
+        <div class="attire-palette-header">
+          <h3 class="attire-palette-title" id="attire-palette-title"></h3>
+          <p class="attire-palette-subtitle" id="attire-palette-subtitle"></p>
+        </div>
+        <div class="attire-swatches-grid" id="attire-swatches-grid" role="list"></div>
+      </div>
+
+      <!-- Reserved Colors Callout -->
+      <div class="attire-reserved-card reveal" id="attire-reserved-card">
+        <div class="attire-reserved-header">
+          <h4 class="attire-reserved-title" id="attire-reserved-title"></h4>
+          <p class="attire-reserved-subtitle" id="attire-reserved-subtitle"></p>
+        </div>
+        <div class="attire-reserved-grid" id="attire-reserved-grid" role="list"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════
+       VENUE
+  ══════════════════════════════════════════════════════════ -->
+  <section id="venue" class="section section-venue" aria-labelledby="venue-title">
+    <div class="container">
+      <h2 class="section-title" id="venue-title"></h2>
+      <div class="venue-inner">
+        <div class="venue-left">
+          <div class="venue-text">
+            <h3 id="venue-name"></h3>
+            <p  id="venue-description"></p>
+            <div class="venue-accommodation-callout reveal" id="venue-accommodation-callout"></div>
+
+            <div class="venue-locations-grid">
+              <!-- Location 1: Castello Petrata -->
+              <div class="venue-loc-card reveal">
+                <div class="venue-loc-header">
+                  <span class="venue-loc-icon" aria-hidden="true">🏰</span>
+                  <h4 class="venue-loc-title" id="venue-castle-title"></h4>
+                </div>
+                <p class="venue-loc-address" id="venue-castle-address"></p>
+                <div class="venue-buttons">
+                  <a id="venue-castle-directions" class="btn btn-outline" target="_blank" rel="noopener"></a>
+                  <a id="venue-castle-website"    class="btn btn-outline" target="_blank" rel="noopener"></a>
+                </div>
+              </div>
+
+              <!-- Location 2: Hotel Cenacolo -->
+              <div class="venue-loc-card reveal">
+                <div class="venue-loc-header">
+                  <span class="venue-loc-icon" aria-hidden="true">🏨</span>
+                  <h4 class="venue-loc-title" id="venue-hotel-title"></h4>
+                </div>
+                <p class="venue-loc-address" id="venue-hotel-address"></p>
+                <p class="venue-loc-note"    id="venue-hotel-note"></p>
+                <div class="venue-buttons">
+                  <a id="venue-hotel-directions" class="btn btn-outline" target="_blank" rel="noopener"></a>
+                  <a id="venue-hotel-website"    class="btn btn-outline" target="_blank" rel="noopener"></a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="venue-map">
+            <iframe id="venue-map-iframe" allowfullscreen loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade" title="Map of the venue"></iframe>
+          </div>
+        </div>
+        <div class="venue-right">
+          <img class="venue-photo" src="https://castellopetrata.it/wp-content/uploads/2023/05/wedding.jpg" alt="Castello Petrata Wedding" loading="lazy" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════
+       TRAVEL / HOW TO GET THERE
+  ══════════════════════════════════════════════════════════ -->
+  <section id="travel" class="section section-travel section-alt" aria-labelledby="travel-title">
+    <div class="container">
+      <h2 class="section-title" id="travel-title"></h2>
+      <p class="section-intro"  id="travel-intro"></p>
+      <div class="airports-list" id="airports-list"></div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════════════
+       RSVP
+  ══════════════════════════════════════════════════════════ -->
+  <section id="rsvp" class="section section-rsvp" aria-labelledby="rsvp-title">
+    <div class="container">
+      <h2 class="section-title" id="rsvp-title"></h2>
+      <p class="rsvp-intro" id="rsvp-intro"></p>
+      <div class="rsvp-iframe-wrapper">
+        <iframe id="rsvp-iframe"
+          frameborder="0"
+          marginheight="0"
+          marginwidth="0"
+          title="RSVP form"
+          height="1600"
+          src="https://docs.google.com/forms/d/e/1FAIpQLSeN_XzomUuujakBnHD3ca6DrNtGBi2zTyas3zG6RTqucaCTrw/viewform?embedded=true"></iframe>
+      </div>
+      <div class="rsvp-cta-buttons">
+        <a id="calendar-btn" class="btn btn-calendar" target="_blank" rel="noopener">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19 4h-1V2h-2v2H8V2H6v2H5C3.9 4 3 4.9 3 6v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11zM5 7V6h14v1H5zm2 4h10v2H7zm0 4h7v2H7z"/></svg>
+          <span class="btn-calendar-label">Add to Google Calendar</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="gifts" class="section section-gifts section-alt" aria-labelledby="gifts-title">
+    <div class="container">
+      <h2 class="section-title" id="gifts-title"></h2>
+      <p class="gifts-intro"   id="gifts-intro"></p>
+      <details class="gifts-accordion">
+        <summary class="gifts-accordion-summary">
+          <span id="gifts-toggle-label"></span>
+          <span class="gifts-accordion-icon" aria-hidden="true">+</span>
+        </summary>
+        <div class="gifts-grid"  id="gifts-grid"></div>
+      </details>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════
+       FOOTER
+  ══════════════════════════════════════════════════════════ -->
+  <footer class="site-footer">
+    <p id="footer-text"></p>
+  </footer>
+
+  <script src="content.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
