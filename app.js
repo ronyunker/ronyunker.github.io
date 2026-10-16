@@ -355,6 +355,9 @@ function setupCarouselEngine(viewport, track, prevBtn, nextBtn, totalSets) {
   }
   animationId = requestAnimationFrame(loop);
 
+  viewport.setAttribute('dir', 'ltr');
+  track.setAttribute('dir', 'ltr');
+
   function scheduleResume(ms = 2200) {
     clearTimeout(resumeTimer);
     resumeTimer = setTimeout(() => {
@@ -363,8 +366,10 @@ function setupCarouselEngine(viewport, track, prevBtn, nextBtn, totalSets) {
   }
 
   // Hover pause on desktop
-  viewport.addEventListener('mouseenter', () => { isPaused = true; });
-  viewport.addEventListener('mouseleave', () => { if (!isInteracting) isPaused = false; });
+  const onMouseEnter = () => { isPaused = true; };
+  const onMouseLeave = () => { if (!isInteracting) isPaused = false; };
+  viewport.addEventListener('mouseenter', onMouseEnter);
+  viewport.addEventListener('mouseleave', onMouseLeave);
 
   // Touch Events (Mobile)
   const onTouchStart = e => {
@@ -465,26 +470,29 @@ function setupCarouselEngine(viewport, track, prevBtn, nextBtn, totalSets) {
     return card ? card.offsetWidth + 24 : 280;
   }
 
-  if (prevBtn) {
-    prevBtn.addEventListener('click', () => {
-      isPaused = true;
-      velocity = getStepDistance() / 240;
-      scheduleResume(2500);
-    });
-  }
+  const onPrevClick = () => {
+    isPaused = true;
+    velocity = getStepDistance() / 240;
+    scheduleResume(2500);
+  };
 
-  if (nextBtn) {
-    nextBtn.addEventListener('click', () => {
-      isPaused = true;
-      velocity = -getStepDistance() / 240;
-      scheduleResume(2500);
-    });
-  }
+  const onNextClick = () => {
+    isPaused = true;
+    velocity = -getStepDistance() / 240;
+    scheduleResume(2500);
+  };
 
+  if (prevBtn) prevBtn.addEventListener('click', onPrevClick);
+  if (nextBtn) nextBtn.addEventListener('click', onNextClick);
+
+  galleryCarouselState.animationId = animationId;
   galleryCarouselState.cleanupListeners = () => {
     if (animationId) cancelAnimationFrame(animationId);
+    galleryCarouselState.animationId = null;
     clearTimeout(resumeTimer);
     window.removeEventListener('resize', updateSingleSetWidth);
+    viewport.removeEventListener('mouseenter', onMouseEnter);
+    viewport.removeEventListener('mouseleave', onMouseLeave);
     viewport.removeEventListener('touchstart', onTouchStart);
     viewport.removeEventListener('touchmove', onTouchMove);
     viewport.removeEventListener('touchend', onTouchEnd);
@@ -492,6 +500,8 @@ function setupCarouselEngine(viewport, track, prevBtn, nextBtn, totalSets) {
     viewport.removeEventListener('mousedown', onMouseDown);
     window.removeEventListener('mousemove', onMouseMove);
     window.removeEventListener('mouseup', onMouseUp);
+    if (prevBtn) prevBtn.removeEventListener('click', onPrevClick);
+    if (nextBtn) nextBtn.removeEventListener('click', onNextClick);
   };
 }
 

@@ -901,6 +901,7 @@ h1, h2, h3, h4 {
   margin-right: calc(50% - 50vw);
   padding: 1rem 0;
   overflow: hidden;
+  direction: ltr;
 }
 
 .carousel-viewport {
@@ -912,6 +913,7 @@ h1, h2, h3, h4 {
   user-select: none;
   -webkit-user-select: none;
   padding: 0.5rem 0;
+  direction: ltr;
 }
 
 .carousel-viewport.is-dragging {
@@ -927,6 +929,14 @@ h1, h2, h3, h4 {
   transform: translate3d(0, 0, 0);
   -webkit-transform: translate3d(0, 0, 0);
   padding: 0 1.5rem;
+  direction: ltr;
+}
+
+/* Force LTR geometry in Hebrew (RTL) mode so physical transform/scroll coordinates never invert or drop offscreen */
+[dir="rtl"] .carousel-container,
+[dir="rtl"] .carousel-viewport,
+[dir="rtl"] .carousel-track {
+  direction: ltr !important;
 }
 
 .carousel-card {
