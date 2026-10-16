@@ -19,6 +19,7 @@
 
       <ul class="nav-links" id="nav-links" role="list">
         <li><a href="#details"  data-nav="details"></a></li>
+        <li><a href="#gallery"  data-nav="gallery"></a></li>
         <li><a href="#schedule" data-nav="schedule"></a></li>
         <li><a href="#attire"   data-nav="attire"></a></li>
         <li><a href="#venue"    data-nav="venue"></a></li>
@@ -96,9 +97,26 @@
   </section>
 
   <!-- ══════════════════════════════════════════════════════
+       PHOTO GALLERY CAROUSEL
+  ══════════════════════════════════════════════════════════ -->
+  <section id="gallery" class="section section-gallery" aria-labelledby="gallery-title">
+    <div class="container text-center">
+      <h2 class="section-title" id="gallery-title"></h2>
+      <p class="section-intro" id="gallery-subtitle"></p>
+    </div>
+    <div class="carousel-container" id="carousel-container">
+      <button class="carousel-nav-btn carousel-prev" id="carousel-prev" aria-label="Previous photo">&#8249;</button>
+      <div class="carousel-viewport" id="carousel-viewport" tabindex="0" role="region" aria-label="Photo carousel">
+        <div class="carousel-track" id="carousel-track"></div>
+      </div>
+      <button class="carousel-nav-btn carousel-next" id="carousel-next" aria-label="Next photo">&#8250;</button>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════
        SCHEDULE
   ══════════════════════════════════════════════════════════ -->
-  <section id="schedule" class="section section-schedule" aria-labelledby="schedule-title">
+  <section id="schedule" class="section section-schedule section-alt" aria-labelledby="schedule-title">
     <div class="container">
       <h2 class="section-title" id="schedule-title">Wedding Programme</h2>
       <p class="schedule-subtitle" id="schedule-subtitle">Sunday, May 23, 2027 · Wedding Day</p>
@@ -159,7 +177,7 @@
   <!-- ══════════════════════════════════════════════════════
        ATTIRE / DRESS CODE (Formal Garden Party)
   ══════════════════════════════════════════════════════════ -->
-  <section id="attire" class="section section-attire section-alt" aria-labelledby="attire-title">
+  <section id="attire" class="section section-attire" aria-labelledby="attire-title">
     <div class="container">
       <div class="attire-header">
         <span class="meta-eyebrow attire-eyebrow" id="attire-eyebrow">DRESS CODE</span>
@@ -195,7 +213,7 @@
   <!-- ══════════════════════════════════════════════════════
        VENUE
   ══════════════════════════════════════════════════════════ -->
-  <section id="venue" class="section section-venue" aria-labelledby="venue-title">
+  <section id="venue" class="section section-venue section-alt" aria-labelledby="venue-title">
     <div class="container">
       <h2 class="section-title" id="venue-title"></h2>
       <div class="venue-inner">
@@ -249,7 +267,7 @@
   <!-- ══════════════════════════════════════════════════════
        TRAVEL / HOW TO GET THERE
   ══════════════════════════════════════════════════════════ -->
-  <section id="travel" class="section section-travel section-alt" aria-labelledby="travel-title">
+  <section id="travel" class="section section-travel" aria-labelledby="travel-title">
     <div class="container">
       <h2 class="section-title" id="travel-title"></h2>
       <p class="section-intro"  id="travel-intro"></p>
@@ -261,7 +279,7 @@
   <!-- ══════════════════════════════════════════════════════
        RSVP
   ══════════════════════════════════════════════════════════ -->
-  <section id="rsvp" class="section section-rsvp" aria-labelledby="rsvp-title">
+  <section id="rsvp" class="section section-rsvp section-alt" aria-labelledby="rsvp-title">
     <div class="container">
       <h2 class="section-title" id="rsvp-title"></h2>
       <p class="rsvp-intro" id="rsvp-intro"></p>
@@ -284,7 +302,7 @@
   </section>
 
 
-  <section id="gifts" class="section section-gifts section-alt" aria-labelledby="gifts-title">
+  <section id="gifts" class="section section-gifts" aria-labelledby="gifts-title">
     <div class="container">
       <h2 class="section-title" id="gifts-title"></h2>
       <p class="gifts-intro"   id="gifts-intro"></p>

@@ -222,45 +222,226 @@ function buildCountdown() {
 }
 
 /* ── Our Story ──────────────────────────────────────────────── */
-let storyLightboxImages = [];
+/* ── Photo Gallery Carousel ─────────────────────────────────── */
+let galleryCarouselState = {
+  animationId: null,
+  isPaused: false,
+  isDragging: false,
+  startX: 0,
+  startScrollLeft: 0,
+  hasMoved: false,
+  pauseTimeout: null,
+  cleanupListeners: null,
+};
 
-function renderStory() {
-  const { story } = CONTENT;
-  if (!story || !story.sectionTitle) return;
-  setText('story-title', story.sectionTitle);
-  const introEl = document.getElementById('story-intro');
-  if (introEl) {
-    introEl.innerHTML = t(story.intro)
-      .split('\n\n')
-      .map(p => `<p>${p}</p>`)
-      .join('');
+function renderGallery() {
+  const { gallery } = CONTENT;
+  const section = document.getElementById('gallery');
+  if (!section || !gallery || !gallery.images || !gallery.images.length) return;
+
+  setText('gallery-title', gallery.sectionTitle);
+  setText('gallery-subtitle', gallery.subtitle);
+
+  const track = document.getElementById('carousel-track');
+  const viewport = document.getElementById('carousel-viewport');
+  const prevBtn = document.getElementById('carousel-prev');
+  const nextBtn = document.getElementById('carousel-next');
+  if (!track || !viewport) return;
+
+  // Cleanup any previous animation or listeners
+  if (galleryCarouselState.animationId) {
+    cancelAnimationFrame(galleryCarouselState.animationId);
+    galleryCarouselState.animationId = null;
+  }
+  if (galleryCarouselState.cleanupListeners) {
+    galleryCarouselState.cleanupListeners();
+    galleryCarouselState.cleanupListeners = null;
+  }
+  clearTimeout(galleryCarouselState.pauseTimeout);
+  galleryCarouselState.isPaused = false;
+  galleryCarouselState.isDragging = false;
+
+  track.innerHTML = '';
+
+  const baseImages = gallery.images;
+  const totalSets = 3; // 3 sets for seamless infinite scrolling
+  const allImages = [];
+
+  for (let s = 0; s < totalSets; s++) {
+    baseImages.forEach((imgData, idx) => {
+      allImages.push({ ...imgData, originalIndex: idx });
+    });
   }
 
-  const grid = document.getElementById('story-gallery');
-  if (!grid) return;
-  grid.innerHTML = '';
+  allImages.forEach((imgData) => {
+    const card = document.createElement('div');
+    card.className = 'carousel-card';
+    card.setAttribute('role', 'button');
+    card.setAttribute('tabindex', '0');
+    card.setAttribute('aria-label', `${t(imgData.alt)} (${imgData.originalIndex + 1})`);
 
-  storyLightboxImages = story.images || [];
-
-  storyLightboxImages.forEach((imgData, index) => {
-    const item = document.createElement('div');
-    item.className = 'gallery-thumb reveal';
-    item.setAttribute('role', 'listitem');
-    item.setAttribute('tabindex', '0');
-
-    item.innerHTML = `
-      <img src="${imgData.src}" alt="${t(imgData.alt)}" loading="lazy" />
-      <div class="gallery-thumb-overlay" aria-hidden="true">&#128269;</div>
+    card.innerHTML = `
+      <img src="${encodeURI(imgData.src)}" alt="${t(imgData.alt)}" loading="lazy" draggable="false" />
+      <div class="carousel-card-overlay" aria-hidden="true">
+        <span class="carousel-zoom-icon">&#128269;</span>
+      </div>
     `;
 
-    const open = () => openLightbox(index);
-    item.addEventListener('click', open);
-    item.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') open(); });
+    const handleSelect = () => {
+      if (galleryCarouselState.hasMoved) return;
+      openLightbox(imgData.originalIndex, baseImages);
+    };
 
-    grid.appendChild(item);
+    card.addEventListener('click', handleSelect);
+    card.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        handleSelect();
+      }
+    });
+
+    track.appendChild(card);
   });
 
   initLightbox();
+  setupCarouselEngine(viewport, prevBtn, nextBtn);
+}
+
+function setupCarouselEngine(viewport, prevBtn, nextBtn) {
+  const state = galleryCarouselState;
+  const speed = 0.65; // gentle, elegant speed in px per frame
+
+  // Set initial scroll to middle set so users can immediately scroll either direction
+  requestAnimationFrame(() => {
+    const singleSetWidth = viewport.scrollWidth / 3;
+    if (singleSetWidth > 0) {
+      viewport.scrollLeft = singleSetWidth;
+    }
+  });
+
+  function pauseAutoScroll(durationMs = 2500) {
+    state.isPaused = true;
+    clearTimeout(state.pauseTimeout);
+    if (durationMs > 0) {
+      state.pauseTimeout = setTimeout(() => {
+        if (!state.isDragging) state.isPaused = false;
+      }, durationMs);
+    }
+  }
+
+  // Animation frame auto-scroll loop
+  function step() {
+    if (!state.isPaused && !state.isDragging) {
+      const singleSetWidth = viewport.scrollWidth / 3;
+      if (singleSetWidth > 0) {
+        viewport.scrollLeft += speed;
+        if (viewport.scrollLeft >= singleSetWidth * 2) {
+          viewport.scrollLeft -= singleSetWidth;
+        } else if (viewport.scrollLeft <= 0) {
+          viewport.scrollLeft += singleSetWidth;
+        }
+      }
+    }
+    state.animationId = requestAnimationFrame(step);
+  }
+  state.animationId = requestAnimationFrame(step);
+
+  // Mouse hover pause
+  const onMouseEnter = () => { state.isPaused = true; };
+  const onMouseLeave = () => { if (!state.isDragging) state.isPaused = false; };
+  viewport.addEventListener('mouseenter', onMouseEnter);
+  viewport.addEventListener('mouseleave', onMouseLeave);
+
+  // Mouse drag support
+  const onMouseDown = e => {
+    state.isDragging = true;
+    state.isPaused = true;
+    state.hasMoved = false;
+    state.startX = e.pageX;
+    state.startScrollLeft = viewport.scrollLeft;
+    viewport.classList.add('is-dragging');
+  };
+
+  const onMouseMove = e => {
+    if (!state.isDragging) return;
+    const dx = e.pageX - state.startX;
+    if (Math.abs(dx) > 6) state.hasMoved = true;
+    viewport.scrollLeft = state.startScrollLeft - dx;
+
+    // Handle seamless infinite boundaries while dragging
+    const singleSetWidth = viewport.scrollWidth / 3;
+    if (singleSetWidth > 0) {
+      if (viewport.scrollLeft >= singleSetWidth * 2) {
+        viewport.scrollLeft -= singleSetWidth;
+        state.startScrollLeft -= singleSetWidth;
+      } else if (viewport.scrollLeft <= 0) {
+        viewport.scrollLeft += singleSetWidth;
+        state.startScrollLeft += singleSetWidth;
+      }
+    }
+  };
+
+  const onMouseUp = () => {
+    if (state.isDragging) {
+      state.isDragging = false;
+      viewport.classList.remove('is-dragging');
+      pauseAutoScroll(2000);
+    }
+  };
+
+  viewport.addEventListener('mousedown', onMouseDown);
+  window.addEventListener('mousemove', onMouseMove);
+  window.addEventListener('mouseup', onMouseUp);
+
+  // Touch support for phones
+  const onTouchStart = () => {
+    state.isPaused = true;
+    state.hasMoved = false;
+  };
+  const onTouchMove = () => {
+    state.hasMoved = true;
+    state.isPaused = true;
+  };
+  const onTouchEnd = () => {
+    pauseAutoScroll(2500);
+  };
+  viewport.addEventListener('touchstart', onTouchStart, { passive: true });
+  viewport.addEventListener('touchmove', onTouchMove, { passive: true });
+  viewport.addEventListener('touchend', onTouchEnd, { passive: true });
+
+  // Navigation Arrow Buttons
+  function getStepDistance() {
+    const card = viewport.querySelector('.carousel-card');
+    return card ? card.offsetWidth + 20 : 300;
+  }
+
+  const onPrevClick = () => {
+    pauseAutoScroll(3000);
+    const dist = getStepDistance();
+    viewport.scrollBy({ left: -dist, behavior: 'smooth' });
+  };
+  const onNextClick = () => {
+    pauseAutoScroll(3000);
+    const dist = getStepDistance();
+    viewport.scrollBy({ left: dist, behavior: 'smooth' });
+  };
+
+  if (prevBtn) prevBtn.addEventListener('click', onPrevClick);
+  if (nextBtn) nextBtn.addEventListener('click', onNextClick);
+
+  // Store cleanup function for re-rendering on lang switch
+  state.cleanupListeners = () => {
+    viewport.removeEventListener('mouseenter', onMouseEnter);
+    viewport.removeEventListener('mouseleave', onMouseLeave);
+    viewport.removeEventListener('mousedown', onMouseDown);
+    window.removeEventListener('mousemove', onMouseMove);
+    window.removeEventListener('mouseup', onMouseUp);
+    viewport.removeEventListener('touchstart', onTouchStart);
+    viewport.removeEventListener('touchmove', onTouchMove);
+    viewport.removeEventListener('touchend', onTouchEnd);
+    if (prevBtn) prevBtn.removeEventListener('click', onPrevClick);
+    if (nextBtn) nextBtn.removeEventListener('click', onNextClick);
+  };
 }
 
 /* ── Event Details ──────────────────────────────────────────── */
@@ -897,8 +1078,8 @@ function initReveal() {
 function renderAll() {
   renderHero();
   renderNav();
-  renderStory();
   renderDetails();
+  renderGallery();
   renderSchedule();
   renderAttire();
   renderVenue();

@@ -65,6 +65,7 @@ const CONTENT = {
   /* ── Nav labels ─────────────────────────────────────────── */
   nav: {
     details:    { ru: "Детали",        en: "Details",     he: "פרטים" },
+    gallery:    { ru: "Фото",          en: "Photos",      he: "תמונות" },
     schedule:   { ru: "Программа",     en: "Schedule",    he: "לוח זמנים" },
     attire:     { ru: "Дресс-код",     en: "Attire",      he: "קוד לבוש" },
     venue:      { ru: "Место",         en: "Venue",       he: "מקום האירוע" },
@@ -73,8 +74,24 @@ const CONTENT = {
     gifts:      { ru: "Подарки",       en: "A Little Gift", he: "מתנה" },
   },
 
-  /* ── Story (optional/safe fallback) ─────────────────────── */
-  story: null,
+  /* ── Photo Gallery / Carousel ────────────────────────────── */
+  gallery: {
+    sectionTitle: { ru: "Рон и Дана", en: "Moments Together", he: "רגעים שלנו" },
+    subtitle: {
+      ru: "Счастливые мгновения нашей истории",
+      en: "Cherished moments from our journey together",
+      he: "רגעים בלתי נשכחים מהמסע המשותף שלנו",
+    },
+    images: [
+      { src: "images/WhatsApp Image 2026-10-16 at 19.17.00.jpeg", alt: { ru: "Рон и Дана", en: "Ron & Dana", he: "רון ודנה" } },
+      { src: "images/WhatsApp Image 2026-10-16 at 19.17.01.jpeg", alt: { ru: "Рон и Дана", en: "Ron & Dana", he: "רון ודנה" } },
+      { src: "images/WhatsApp Image 2026-10-16 at 19.17.01 (1).jpeg", alt: { ru: "Рон и Дана", en: "Ron & Dana", he: "רון ודנה" } },
+      { src: "images/WhatsApp Image 2026-10-16 at 19.17.01 (2).jpeg", alt: { ru: "Рон и Дана", en: "Ron & Dana", he: "רון ודנה" } },
+      { src: "images/WhatsApp Image 2026-10-16 at 19.17.02.jpeg", alt: { ru: "Рон и Дана", en: "Ron & Dana", he: "רון ודנה" } },
+      { src: "images/WhatsApp Image 2026-10-16 at 19.17.02 (1).jpeg", alt: { ru: "Рон и Дана", en: "Ron & Dana", he: "רון ודנה" } },
+      { src: "images/WhatsApp Image 2026-10-16 at 19.17.02 (2).jpeg", alt: { ru: "Рон и Дана", en: "Ron & Dana", he: "רון ודנה" } },
+    ],
+  },
 
   /* ── Event Details (3-day overview) ────────────────────── */
   details: {
