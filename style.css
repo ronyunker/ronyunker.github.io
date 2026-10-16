@@ -904,21 +904,14 @@ h1, h2, h3, h4 {
 }
 
 .carousel-viewport {
-  display: flex;
-  overflow-x: scroll;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-  -webkit-overflow-scrolling: touch;
-  scroll-behavior: auto;
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  touch-action: pan-y;
   cursor: grab;
   user-select: none;
-  padding: 0.5rem 2rem;
-  transform: translateZ(0);
-  -webkit-transform: translateZ(0);
-}
-
-.carousel-viewport::-webkit-scrollbar {
-  display: none;
+  -webkit-user-select: none;
+  padding: 0.5rem 0;
 }
 
 .carousel-viewport.is-dragging {
@@ -930,8 +923,10 @@ h1, h2, h3, h4 {
   gap: 1.5rem;
   align-items: center;
   width: max-content;
-  transform: translateZ(0);
-  -webkit-transform: translateZ(0);
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+  -webkit-transform: translate3d(0, 0, 0);
+  padding: 0 1.5rem;
 }
 
 .carousel-card {
@@ -2438,12 +2433,9 @@ h1, h2, h3, h4 {
     padding: var(--space-lg) 0;
   }
 
-  .carousel-viewport {
-    padding: 0.5rem 1rem;
-  }
-
   .carousel-track {
     gap: 1rem;
+    padding: 0 1rem;
   }
 
   .carousel-card {

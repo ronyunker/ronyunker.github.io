@@ -287,147 +287,211 @@ function renderGallery() {
 }
 
 function setupCarouselEngine(viewport, track, prevBtn, nextBtn, totalSets) {
-  const state = galleryCarouselState;
-  const speed = 0.65; // gentle drift speed in px per frame
+  let animationId = null;
+  let isPaused = false;
+  let isInteracting = false;
+  let startX = 0;
+  let startY = 0;
+  let currentX = 0;
+  let touchStartX = 0;
+  let lastX = 0;
+  let lastTime = 0;
+  let velocity = 0;
+  let isHorizontalDrag = null;
+  let singleSetWidth = 0;
+  let resumeTimer = null;
+  const autoSpeed = 0.65; // pixels per frame
 
-  // Position initial scroll at the start of Set 2 (middle set)
-  function initPosition() {
-    const singleSetWidth = track.scrollWidth / totalSets;
-    if (singleSetWidth > 0 && viewport.scrollLeft === 0) {
-      viewport.scrollLeft = singleSetWidth;
+  function updateSingleSetWidth() {
+    const sw = track.scrollWidth;
+    if (sw > 0) {
+      singleSetWidth = sw / totalSets;
+      if (currentX === 0) {
+        currentX = -singleSetWidth;
+        applyTransform();
+      }
     }
   }
-  requestAnimationFrame(initPosition);
-  setTimeout(initPosition, 100);
-  setTimeout(initPosition, 400);
 
-  function pauseAutoScroll(durationMs = 2500) {
-    state.isPaused = true;
-    clearTimeout(state.pauseTimeout);
-    if (durationMs > 0) {
-      state.pauseTimeout = setTimeout(() => {
-        if (!state.isDragging && !state.isTouching) state.isPaused = false;
-      }, durationMs);
+  function applyTransform() {
+    if (!singleSetWidth) return;
+    while (currentX <= -singleSetWidth * 2) {
+      currentX += singleSetWidth;
     }
+    while (currentX > -singleSetWidth) {
+      currentX -= singleSetWidth;
+    }
+    track.style.transform = `translate3d(${currentX}px, 0, 0)`;
   }
 
-  // Smooth continuous auto-scroll with safe boundary wrapping
-  function step() {
-    if (!state.isPaused && !state.isDragging && !state.isTouching) {
-      viewport.scrollLeft += speed;
-      const singleSetWidth = track.scrollWidth / totalSets;
-      if (singleSetWidth > 0) {
-        if (viewport.scrollLeft >= singleSetWidth * 2) {
-          viewport.scrollLeft -= singleSetWidth;
-        } else if (viewport.scrollLeft <= 0) {
-          viewport.scrollLeft += singleSetWidth;
+  // Initial set calculation
+  requestAnimationFrame(updateSingleSetWidth);
+  setTimeout(updateSingleSetWidth, 100);
+  setTimeout(updateSingleSetWidth, 400);
+  window.addEventListener('resize', updateSingleSetWidth, { passive: true });
+
+  // Main 60fps/120fps animation loop
+  let lastFrameTime = performance.now();
+  function loop(now) {
+    const dt = Math.min((now - lastFrameTime) / 16.67, 2.5); // normalize for 60Hz and 120Hz ProMotion
+    lastFrameTime = now;
+
+    if (!isInteracting) {
+      if (Math.abs(velocity) > 0.05) {
+        // Natural inertia fling after touch release
+        currentX += velocity * dt * 16.67;
+        velocity *= Math.pow(0.92, dt);
+        applyTransform();
+      } else {
+        velocity = 0;
+        if (!isPaused) {
+          currentX -= autoSpeed * dt;
+          applyTransform();
         }
       }
     }
-    state.animationId = requestAnimationFrame(step);
+
+    animationId = requestAnimationFrame(loop);
   }
-  state.animationId = requestAnimationFrame(step);
+  animationId = requestAnimationFrame(loop);
 
-  // Re-center ONLY when user scroll has completely stopped (prevents mobile tile drop/flicker)
-  let idleDebounce = null;
-  const onScroll = () => {
-    state.isPaused = true;
-    clearTimeout(idleDebounce);
-    idleDebounce = setTimeout(() => {
-      const singleSetWidth = track.scrollWidth / totalSets;
-      if (!singleSetWidth || singleSetWidth < 50) return;
+  function scheduleResume(ms = 2200) {
+    clearTimeout(resumeTimer);
+    resumeTimer = setTimeout(() => {
+      if (!isInteracting) isPaused = false;
+    }, ms);
+  }
 
-      if (viewport.scrollLeft >= singleSetWidth * 2) {
-        viewport.scrollLeft -= singleSetWidth;
-      } else if (viewport.scrollLeft <= singleSetWidth * 0.2) {
-        viewport.scrollLeft += singleSetWidth;
-      }
+  // Hover pause on desktop
+  viewport.addEventListener('mouseenter', () => { isPaused = true; });
+  viewport.addEventListener('mouseleave', () => { if (!isInteracting) isPaused = false; });
 
-      if (!state.isDragging && !state.isTouching) {
-        state.isPaused = false;
-      }
-    }, 300);
+  // Touch Events (Mobile)
+  const onTouchStart = e => {
+    if (!e.touches || !e.touches[0]) return;
+    isInteracting = true;
+    isPaused = true;
+    velocity = 0;
+    isHorizontalDrag = null;
+    startX = e.touches[0].clientX;
+    startY = e.touches[0].clientY;
+    lastX = startX;
+    lastTime = performance.now();
+    touchStartX = currentX;
   };
-  viewport.addEventListener('scroll', onScroll, { passive: true });
 
-  // Mouse hover pause
-  const onMouseEnter = () => { state.isPaused = true; };
-  const onMouseLeave = () => { if (!state.isDragging && !state.isTouching) state.isPaused = false; };
-  viewport.addEventListener('mouseenter', onMouseEnter);
-  viewport.addEventListener('mouseleave', onMouseLeave);
+  const onTouchMove = e => {
+    if (!isInteracting || !e.touches || !e.touches[0]) return;
+    const clientX = e.touches[0].clientX;
+    const clientY = e.touches[0].clientY;
+    const dx = clientX - startX;
+    const dy = clientY - startY;
 
-  // Mouse drag support for desktop
+    if (isHorizontalDrag === null) {
+      if (Math.abs(dx) > 6 || Math.abs(dy) > 6) {
+        isHorizontalDrag = Math.abs(dx) > Math.abs(dy);
+      }
+    }
+
+    if (!isHorizontalDrag) return;
+
+    if (e.cancelable) e.preventDefault();
+
+    const now = performance.now();
+    const timeDiff = now - lastTime;
+    if (timeDiff > 0) {
+      velocity = (clientX - lastX) / timeDiff;
+      lastX = clientX;
+      lastTime = now;
+    }
+
+    currentX = touchStartX + dx;
+    applyTransform();
+  };
+
+  const onTouchEnd = () => {
+    if (!isInteracting) return;
+    isInteracting = false;
+    velocity = Math.max(-2.5, Math.min(2.5, velocity));
+    scheduleResume(2000);
+  };
+
+  viewport.addEventListener('touchstart', onTouchStart, { passive: true });
+  viewport.addEventListener('touchmove', onTouchMove, { passive: false });
+  viewport.addEventListener('touchend', onTouchEnd, { passive: true });
+  viewport.addEventListener('touchcancel', onTouchEnd, { passive: true });
+
+  // Mouse Drag Events (Desktop)
   const onMouseDown = e => {
-    state.isDragging = true;
-    state.isPaused = true;
-    state.startX = e.pageX;
-    state.startScrollLeft = viewport.scrollLeft;
+    isInteracting = true;
+    isPaused = true;
+    velocity = 0;
+    startX = e.pageX;
+    lastX = startX;
+    lastTime = performance.now();
+    touchStartX = currentX;
     viewport.classList.add('is-dragging');
   };
 
   const onMouseMove = e => {
-    if (!state.isDragging) return;
-    const dx = e.pageX - state.startX;
-    viewport.scrollLeft = state.startScrollLeft - dx;
+    if (!isInteracting) return;
+    const now = performance.now();
+    const timeDiff = now - lastTime;
+    if (timeDiff > 0) {
+      velocity = (e.pageX - lastX) / timeDiff;
+      lastX = e.pageX;
+      lastTime = now;
+    }
+    const dx = e.pageX - startX;
+    currentX = touchStartX + dx;
+    applyTransform();
   };
 
   const onMouseUp = () => {
-    if (state.isDragging) {
-      state.isDragging = false;
-      viewport.classList.remove('is-dragging');
-      pauseAutoScroll(2000);
-    }
+    if (!isInteracting) return;
+    isInteracting = false;
+    viewport.classList.remove('is-dragging');
+    velocity = Math.max(-2.5, Math.min(2.5, velocity));
+    scheduleResume(2000);
   };
 
   viewport.addEventListener('mousedown', onMouseDown);
   window.addEventListener('mousemove', onMouseMove);
   window.addEventListener('mouseup', onMouseUp);
 
-  // Touch support for mobile phones - purely native & fluid
-  const onTouchStart = () => {
-    state.isTouching = true;
-    state.isPaused = true;
-  };
-  const onTouchEnd = () => {
-    state.isTouching = false;
-    pauseAutoScroll(2500);
-  };
-  viewport.addEventListener('touchstart', onTouchStart, { passive: true });
-  viewport.addEventListener('touchend', onTouchEnd, { passive: true });
-  viewport.addEventListener('touchcancel', onTouchEnd, { passive: true });
-
   // Navigation Arrow Buttons
   function getStepDistance() {
     const card = viewport.querySelector('.carousel-card');
-    return card ? card.offsetWidth + 20 : 300;
+    return card ? card.offsetWidth + 24 : 280;
   }
 
-  const onPrevClick = () => {
-    pauseAutoScroll(3000);
-    viewport.scrollBy({ left: -getStepDistance(), behavior: 'smooth' });
-  };
-  const onNextClick = () => {
-    pauseAutoScroll(3000);
-    viewport.scrollBy({ left: getStepDistance(), behavior: 'smooth' });
-  };
+  if (prevBtn) {
+    prevBtn.addEventListener('click', () => {
+      isPaused = true;
+      velocity = getStepDistance() / 240;
+      scheduleResume(2500);
+    });
+  }
 
-  if (prevBtn) prevBtn.addEventListener('click', onPrevClick);
-  if (nextBtn) nextBtn.addEventListener('click', onNextClick);
+  if (nextBtn) {
+    nextBtn.addEventListener('click', () => {
+      isPaused = true;
+      velocity = -getStepDistance() / 240;
+      scheduleResume(2500);
+    });
+  }
 
-  // Store cleanup function for re-rendering on lang switch
-  state.cleanupListeners = () => {
-    viewport.removeEventListener('scroll', onScroll);
-    viewport.removeEventListener('mouseenter', onMouseEnter);
-    viewport.removeEventListener('mouseleave', onMouseLeave);
+  galleryCarouselState.cleanupListeners = () => {
+    if (animationId) cancelAnimationFrame(animationId);
+    clearTimeout(resumeTimer);
+    window.removeEventListener('resize', updateSingleSetWidth);
+    viewport.removeEventListener('touchstart', onTouchStart);
+    viewport.removeEventListener('touchmove', onTouchMove);
+    viewport.removeEventListener('touchend', onTouchEnd);
+    viewport.removeEventListener('touchcancel', onTouchEnd);
     viewport.removeEventListener('mousedown', onMouseDown);
     window.removeEventListener('mousemove', onMouseMove);
     window.removeEventListener('mouseup', onMouseUp);
-    viewport.removeEventListener('touchstart', onTouchStart);
-    viewport.removeEventListener('touchend', onTouchEnd);
-    viewport.removeEventListener('touchcancel', onTouchEnd);
-    if (prevBtn) prevBtn.removeEventListener('click', onPrevClick);
-    if (nextBtn) nextBtn.removeEventListener('click', onNextClick);
-    clearTimeout(idleDebounce);
   };
 }
 
