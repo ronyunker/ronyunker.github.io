@@ -1684,8 +1684,61 @@ h1, h2, h3, h4 {
   border-color: var(--color-text);
 }
 
-.travel-app-chip:hover span {
-  color: rgba(255, 255, 255, 0.85);
+/* ── ZTL Zone Box ─────────────────────────────────────────── */
+.travel-ztl-layout {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 2.5rem;
+}
+
+.travel-ztl-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.travel-ztl-tip {
+  margin-top: 1.25rem;
+  padding: 0.85rem 1.15rem;
+  background: var(--color-bg);
+  border-inline-start: 3px solid var(--color-accent);
+  border-radius: var(--radius-xs);
+  font-size: 0.88rem;
+  color: var(--color-text-light);
+  line-height: 1.65;
+}
+
+.travel-ztl-visual {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  flex-shrink: 0;
+  width: 140px;
+  padding-top: 0.25rem;
+}
+
+.travel-ztl-img {
+  width: 100%;
+  max-width: 110px;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 14px rgba(0, 0, 0, 0.08));
+  margin-bottom: 0.65rem;
+}
+
+.travel-ztl-caption {
+  font-family: var(--font-script), 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.05rem;
+  font-style: italic;
+  color: var(--color-text-light);
+  line-height: 1.35;
+}
+
+[dir="rtl"] .travel-ztl-caption {
+  font-family: 'Frank Ruhl Libre', Georgia, serif;
+  font-size: 0.86rem;
+  font-style: normal;
 }
 
 .travel-contact-note {
@@ -2369,6 +2422,21 @@ h1, h2, h3, h4 {
     min-height: 38px;
   }
 
+  .travel-ztl-layout {
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .travel-ztl-visual {
+    width: 100%;
+    padding-top: 0;
+  }
+
+  .travel-ztl-img {
+    max-width: 95px;
+  }
+
   /* RSVP & Gifts */
   .rsvp-iframe-wrapper {
     outline-offset: -5px;
@@ -2581,6 +2649,11 @@ h1, h2, h3, h4 {
 
   .travel-route-from {
     white-space: normal;
+  }
+
+  .travel-ztl-tip {
+    padding: 0.75rem 0.95rem;
+    font-size: 0.84rem;
   }
 
   .travel-contact-note {

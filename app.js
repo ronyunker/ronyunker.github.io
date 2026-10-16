@@ -618,6 +618,30 @@ function renderTravel() {
   `;
   container.appendChild(carWrap);
 
+  // ── ZTL Signs ────────────────────────────────────────────
+  const ztl = travel.ztlSection;
+  if (ztl) {
+    const ztlWrap = document.createElement('div');
+    ztlWrap.className = 'travel-section travel-ztl-section reveal visible';
+    const paragraphsHtml = ztl.paragraphs.map(p => `<p class="travel-text">${t(p)}</p>`).join('');
+    ztlWrap.innerHTML = `
+      <div class="travel-ztl-layout">
+        <div class="travel-ztl-info">
+          <h3 class="travel-subtitle">${t(ztl.title)}</h3>
+          ${paragraphsHtml}
+          <div class="travel-ztl-tip">
+            ${t(ztl.tip)}
+          </div>
+        </div>
+        <div class="travel-ztl-visual">
+          <img src="${ztl.image}" alt="${t(ztl.caption)}" class="travel-ztl-img" loading="lazy" />
+          <span class="travel-ztl-caption">${t(ztl.caption)}</span>
+        </div>
+      </div>
+    `;
+    container.appendChild(ztlWrap);
+  }
+
   // ── Apps ─────────────────────────────────────────────────
   const ap = travel.appsSection;
   const appsWrap = document.createElement('div');

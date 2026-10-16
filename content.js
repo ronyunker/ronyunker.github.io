@@ -581,6 +581,36 @@ const CONTENT = {
         { name: "Enterprise", url: "https://www.enterprise.it/en/home.html" },
       ],
     },
+    ztlSection: {
+      title: {
+        ru: "🚗 Остерегайтесь знаков ZTL",
+        en: "🚗 Look out for ZTL signs",
+        he: "🚗 שימו לב לשלטי ZTL",
+      },
+      paragraphs: [
+        {
+          ru: "При въезде на автомобиле в исторические центры итальянских городов обращайте внимание на знаки «ZTL – Zona a Traffico Limitato». Они обозначают зону ограниченного движения, обычно контролируемую камерами, куда въезд разрешен только авторизованному транспорту в указанные часы.",
+          en: "When driving into Italian historic towns, look for signs marked “ZTL – Zona a Traffico Limitato”. They mark a restricted traffic area, usually monitored by cameras, where only authorised vehicles may enter during the hours shown.",
+          he: "בנסיעה ברכב לתוך מרכזי ערים היסטוריות באיטליה, חפשו שלטים המסומנים ב-“ZTL – Zona a Traffico Limitato”. אלו אזורי תנועה מוגבלת, המפוקחים לרוב באמצעות מצלמות, ואשר הכניסה אליהם מותרת לרכבים מורשים בלבד בשעות המצוינות.",
+        },
+        {
+          ru: "Если на световом табло горит «ZTL ATTIVA», въезжать без специального разрешения строго запрещено — въезд в активную зону ZTL влечет за собой штраф. Правила различаются в зависимости от города, дня и времени, поэтому всегда проверяйте знаки перед въездом.",
+          en: "If the panel says “ZTL ATTIVA”, do not drive in unless your vehicle is authorised, as entering an active ZTL results in a fine. Rules vary by town, day and time, so always check the signs before entering.",
+          he: "אם הלוח האלקטרוני מציג “ZTL ATTIVA”, אין להיכנס לאזור אלא אם רכבכם מורשה לכך — כניסה ל-ZTL פעיל גוררת קנס. הכללים משתנים לפי עיר, יום ושעה, לכן תמיד בדקו את השילוט לפני הכניסה.",
+        },
+      ],
+      tip: {
+        ru: "💡 Совет: при посещении исторических городов оставляйте машину на обозначенных парковках за пределами зоны ZTL и прогуливайтесь в центр пешком.",
+        en: "💡 Tip: when visiting historic towns, leave your car in a designated car park outside the ZTL and walk into the centre.",
+        he: "💡 טיפ: בעת ביקור בעיירות היסטוריות, השאירו את הרכב בחניון מוסדר מחוץ לאזור ה-ZTL והיכנסו למרכז ברגל.",
+      },
+      image: "images/ztl_sign.png",
+      caption: {
+        ru: "Типичный знак въезда в зону ZTL",
+        en: "A typical ZTL entrance sign",
+        he: "שלט כניסה טיפוסי לאזור ZTL",
+      },
+    },
     shuttleSection: {
       title: {
         ru: "🚌 Свадебные шаттлы",
