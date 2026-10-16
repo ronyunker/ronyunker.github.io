@@ -70,7 +70,7 @@ const CONTENT = {
     attire:     { ru: "Дресс-код",     en: "Attire",      he: "קוד לבוש" },
     venue:      { ru: "Место",         en: "Venue",       he: "מקום האירוע" },
     travel:     { ru: "Как добраться", en: "Travel",      he: "הגעה" },
-    rsvp:       { ru: "RSVP",          en: "RSVP",        he: "אישור הגעה" },
+    rsvp:       { ru: "Подтвердить",   en: "RSVP",        he: "אישור הגעה" },
     gifts:      { ru: "Подарки",       en: "A Little Gift", he: "מתנה" },
   },
 
@@ -266,9 +266,9 @@ const CONTENT = {
           he: "מסיבה וריקודים!",
         },
         note:  {
-          ru: "DJ, живой бар и танцы · Организованные шаттлы обратно в Hotel Cenacolo",
+          ru: "Диджей, открытый бар и танцы · Организованные шаттлы обратно в Hotel Cenacolo",
           en: "DJ, open bar & dancing · Return shuttles to Hotel Cenacolo throughout the night",
-          he: "DJ, בר פתוח וריקודים · שאטלים חזרה למלון Hotel Cenacolo לאורך הלילה",
+          he: "דיג'יי, בר פתוח וריקודים · שאטלים חזרה למלון Hotel Cenacolo לאורך הלילה",
         },
       },
     ],
@@ -282,9 +282,9 @@ const CONTENT = {
       he: "קוד לבוש וסגנון",
     },
     vibe: {
-      ru: "Formal Garden Party",
+      ru: "Элегантный садовый стиль",
       en: "Formal Garden Party",
-      he: "Formal Garden Party",
+      he: "מסיבת גן אלגנטית",
     },
     subtitle: {
       ru: "Элегантная торжественность в цветущих садах замка Castello Petrata",
@@ -292,9 +292,9 @@ const CONTENT = {
       he: "אלגנטיות קיצית ורומנטית בין גני האירוע של קסטלו פטרטה",
     },
     intro: {
-      ru: "Наше свадебное торжество пройдет под открытым небом в окружении холмов Умбрии и живописных оливковых рощ замка Castello Petrata. Мы приглашаем наших гостей поддержать атмосферу Formal Garden Party — утонченную, романтичную и летнюю.",
+      ru: "Наше свадебное торжество пройдет под открытым небом в окружении холмов Умбрии и живописных оливковых рощ замка Castello Petrata. Мы приглашаем наших гостей поддержать элегантный стиль торжества в саду — утонченный, романтичный и праздничный.",
       en: "Our wedding celebration takes place outdoors surrounded by the rolling Umbrian hills and olive groves of Castello Petrata. We invite our guests to embrace a chic Formal Garden Party aesthetic — elevated, romantic, and light.",
-      he: "החתונה שלנו תתקיים תחת כיפת השמיים בין גבעות אומבריה ומטעי הזיתים של קסטלו פטרטה. נשמח לחגוג יחד באווירת Formal Garden Party — אלגנטית, קיצית ורומנטית.",
+      he: "החתונה שלנו תתקיים תחת כיפת השמיים בין גבעות אומבריה ומטעי הזיתים של קסטלו פטרטה. נשמח לחגוג יחד באווירת מסיבת גן אלגנטית וחגיגית — קלילה, קיצית ורומנטית.",
     },
     cards: [
       {
@@ -673,9 +673,9 @@ const CONTENT = {
         icon:  "🏦",
         title: { ru: "Банковский перевод", en: "Bank Transfer", he: "העברה בנקאית" },
         text:  {
-          ru: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-          en: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-          he: "לורם איפסום דולור סיט אמט, קונסקטורר אדיפיסינג אלית.",
+          ru: "Реквизиты для банковского перевода в евро (EUR):",
+          en: "Account details for bank transfer in EUR:",
+          he: "פרטי חשבון להעברה בנקאית ביורו (EUR):",
         },
         details: [
           {
