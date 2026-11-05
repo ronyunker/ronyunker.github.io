@@ -64,10 +64,10 @@ const CONTENT = {
 
   /* ── Nav labels ─────────────────────────────────────────── */
   nav: {
-    details:    { ru: "Детали",        en: "Details",     he: "פרטים" },
+    details:    { ru: "Выходные",      en: "The weekend", he: "פרטים" },
     gallery:    { ru: "Фото",          en: "Photos",      he: "תמונות" },
     schedule:   { ru: "Программа",     en: "Schedule",    he: "לוח זמנים" },
-    attire:     { ru: "Дресс-код",     en: "Attire",      he: "קוד לבוש" },
+    attire:     { ru: "Дресс-код",     en: "Dress code",  he: "קוד לבוש" },
     venue:      { ru: "Место",         en: "Venue",       he: "מקום האירוע" },
     travel:     { ru: "Как добраться", en: "Travel",      he: "הגעה" },
     rsvp:       { ru: "Подтвердить",   en: "RSVP",        he: "אישור הגעה" },
@@ -78,9 +78,9 @@ const CONTENT = {
   gallery: {
     sectionTitle: { ru: "Рон и Дана", en: "Moments Together", he: "רגעים שלנו" },
     subtitle: {
-      ru: "Счастливые мгновения нашей истории",
-      en: "Cherished moments from our journey together",
-      he: "רגעים בלתי נשכחים מהמסע המשותף שלנו",
+      ru: "Наши любимые моменты, и впереди еще больше…",
+      en: "Our favorite moments with more to come…",
+      he: "הרגעים האהובים עלינו עד כה",
     },
     images: [
       { src: "images/carousel_1.jpg", alt: { ru: "Рон и Дана", en: "Ron & Dana", he: "רון ודנה" } },
@@ -107,52 +107,46 @@ const CONTENT = {
         lines: {
           ru: [
             "Заезд в Hotel Cenacolo (Ассизи) с <span class=\"detail-em\">14:00</span>",
-            "Размещение и заселение гостей в отеле",
-            "Отдых и вечер знакомства",
-            "Дресс-код: праздничный элегантный",
+            "Welcome party в <span class=\"detail-em\">18:00</span>",
+            "Ужин-буфет и напитки",
           ],
           en: [
             "Check-in at Hotel Cenacolo (Assisi) from <span class=\"detail-em\">2:00 PM (14:00)</span>",
-            "Guest accommodation & room settlement",
-            "Evening relaxation and welcome gathering",
-            "Dress code: festive chic",
+            "Welcome party 6:00 PM (18:00)",
+            "Buffet Dinner & Drinks",
           ],
           he: [
             "צ'ק-אין במלון Hotel Cenacolo (אסיסי) החל מ-<span class=\"detail-em\">14:00</span>",
             "קבלת חדרים והתמקמות האורחים במלון",
-            "התרעננות ומפגש פתיחה נינוח",
-            "קוד לבוש: שיק חגיגי",
+            "Welcome Party - בופה פיצות ופסטות ואלכוהול",
           ],
         },
       },
       {
         icon:  "💍",
         title: {
-          ru: "Воскресенье 23 – Свадебный день в Castello Petrata",
-          en: "Sunday 23 – Wedding Day at Castello Petrata",
-          he: "ראשון 23 – יום החתונה בקסטלו פטרטה",
+          ru: "",
+          en: "",
+          he: "",
         },
         lines: {
           ru: [
-            "Завтрак в отеле Hotel Cenacolo (<span class=\"detail-em\">07:30–10:00</span>)",
-            "<span class=\"detail-em\">16:30</span> – Организованный трансфер (шаттл) из Hotel Cenacolo в Castello Petrata",
-            "17:00 Сбор гостей · 17:30 Церемония · 18:00 Аперитив · 20:00 Ужин · 22:00 Вечеринка",
+            "Завтрак в отеле Hotel Cenacolo (включен) (<span class=\"detail-em\">07:30–10:00</span>)",
+            "<span class=\"detail-em\">15:30</span> – Организованный трансфер (шаттл) из Hotel Cenacolo в Castello Petrata",
+            "16:00 Сбор гостей · 16:30 Церемония · 17:00 Аперитив · 19:00 Ужин · 21:00 Вечеринка!",
             "Организованные обратные шаттлы в отель после завершения праздника",
-            "Дресс-код: вечерний праздничный",
           ],
           en: [
-            "Breakfast at Hotel Cenacolo (<span class=\"detail-em\">7:30–10:00 AM</span>)",
-            "<span class=\"detail-em\">4:30 PM (16:30)</span> – Shuttle service from Hotel Cenacolo to Castello Petrata",
-            "5:00 PM Gathering · 5:30 PM Ceremony · 6:00 PM Aperitivo · 8:00 PM Dinner · 10:00 PM Party",
+            "Breakfast at Hotel Cenacolo  (included) (<span class=\"detail-em\">7:30–10:00 AM</span>)",
+            "<span class=\"detail-em\">3:30 PM (15:30)</span> – Shuttle service from Hotel Cenacolo to Castello Petrata",
+            "4:00 PM Gathering · 4:30 PM Ceremony · 5:00 PM Aperitivo · 7:00 PM Dinner · 9:00 PM Party!",
             "Return shuttles to Hotel Cenacolo provided throughout the night",
-            "Dress code: formal / festive attire",
           ],
           he: [
-            "ארוחת בוקר במלון Hotel Cenacolo (<span class=\"detail-em\">07:30–10:00</span>)",
-            "<span class=\"detail-em\">16:30</span> – שאטל מאורגן ממלון Hotel Cenacolo לקסטלו פטרטה",
-            "17:00 התכנסות · 17:30 טקס חופה · 18:00 אפריטיבו · 20:00 ארוחת ערב · 22:00 מסיבה",
+            "ארוחת בוקר במלון (כלולה) Hotel Cenacolo (<span class=\"detail-em\">07:30–10:00</span>)",
+            "<span class=\"detail-em\">15:30</span> – הסעה מהמלון לחתונה בקסטלו",
+            "16:00 התכנסות · 16:30 טקס חופה · 17:00 אפריטיבו · 19:00 ארוחת ערב · 21:00 מסיבה",
             "שאטלים חזרה למלון ייצאו לאורך כל הלילה",
-            "קוד לבוש: רשמי / שיק חגיגי",
           ],
         },
       },
@@ -165,19 +159,16 @@ const CONTENT = {
         },
         lines: {
           ru: [
-            "Завтрак в Hotel Cenacolo (<span class=\"detail-em\">07:30–10:00</span>)",
+            "Завтрак в отеле Hotel Cenacolo (включен) (<span class=\"detail-em\">07:30–10:00</span>)",
             "Выезд из номеров в <span class=\"detail-em\">10:00</span>",
-            "Спасибо, что разделили эти волшебные дни с нами!",
           ],
           en: [
-            "Breakfast at Hotel Cenacolo (<span class=\"detail-em\">7:30–10:00 AM</span>)",
+            "Breakfast at Hotel Cenacolo  (included) (<span class=\"detail-em\">7:30–10:00 AM</span>)",
             "Hotel check-out at <span class=\"detail-em\">10:00 AM (10:00)</span>",
-            "Goodbye and thank you for celebrating this unforgettable weekend with us!",
           ],
           he: [
-            "ארוחת בוקר במלון Hotel Cenacolo (<span class=\"detail-em\">07:30–10:00</span>)",
+            "ארוחת בוקר במלון (כלולה) Hotel Cenacolo (<span class=\"detail-em\">07:30–10:00</span>)",
             "צ'ק-אאוט מחדרי המלון בשעה <span class=\"detail-em\">10:00</span>",
-            "להתראות ותודה שחגגתם איתנו את סוף השבוע הבלתי נשכח!",
           ],
         },
       },
@@ -194,7 +185,7 @@ const CONTENT = {
     },
     items: [
       {
-        time:  "16:30",
+        time:  "15:30",
         label: {
           ru: "Шаттл на свадьбу",
           en: "Shuttle to the Wedding",
@@ -207,7 +198,7 @@ const CONTENT = {
         },
       },
       {
-        time:  "17:00",
+        time:  "16:00",
         label: {
           ru: "Сбор гостей и напитки",
           en: "Gathering & Welcome Drinks",
@@ -216,15 +207,15 @@ const CONTENT = {
         note:  {
           ru: "Приветственные напитки на панорамной террасе Castello Petrata",
           en: "Welcome drinks on the panoramic terrace at Castello Petrata",
-          he: "כיבוד קל ושתייה על המרפסת הפנורמית בקסטלו פטרטה",
+          he: "שתייה על המרפסת לצד הנוף בקסטלו פטרטה",
         },
       },
       {
-        time:  "17:30",
+        time:  "16:30",
         label: {
           ru: "Свадебная церемония",
           en: "Wedding Ceremony",
-          he: "טקס החופה",
+          he: "\"חופה\"",
         },
         note:  {
           ru: "В саду замка Castello Petrata",
@@ -233,42 +224,42 @@ const CONTENT = {
         },
       },
       {
-        time:  "18:00",
+        time:  "17:00",
         label: {
           ru: "Аперитив и коктейли",
           en: "Aperitivo & Cocktails",
           he: "אפריטיבו וקוקטיילים",
         },
         note:  {
-          ru: "Коктейли и закуски у бассейна и оливковой рощи",
-          en: "Cocktails and Italian finger food by the pool and olive grove",
-          he: "קוקטיילים ונשנושים לצד הבריכה ומטעי הזיתים",
+          ru: "Коктейли и итальянский буфет",
+          en: "Cocktails and Italian buffet",
+          he: "קוקטיילים ובופה איטלקי",
         },
       },
       {
-        time:  "20:00",
+        time:  "19:00",
         label: {
-          ru: "Праздничный гала-ужин",
-          en: "Gala Dinner",
-          he: "סעודת חתונה",
+          ru: "Ужин",
+          en: "Dinner",
+          he: "ארוחת ערב",
         },
         note:  {
-          ru: "Праздничный ужин в замке",
-          en: "Festive wedding dinner",
-          he: "ארוחת ערב חגיגית בטירה",
+          ru: "Ужин из трех блюд: ризотто, паста, основное блюдо",
+          en: "Three course dinner: Risotto, Pasta, Main course",
+          he: "ארוחת שלוש מנות: ראשונה-ריזוטו, שנייה-פסטה, מנה עיקרית",
         },
       },
       {
-        time:  "22:00",
+        time:  "21:00",
         label: {
-          ru: "Вечеринка и танцы!",
+          ru: "Вечеринка",
           en: "Party & Dancing!",
-          he: "מסיבה וריקודים!",
+          he: "מסיבה",
         },
         note:  {
-          ru: "Диджей, открытый бар и танцы · Организованные шаттлы обратно в Hotel Cenacolo",
-          en: "DJ, open bar & dancing · Return shuttles to Hotel Cenacolo throughout the night",
-          he: "דיג'יי, בר פתוח וריקודים · שאטלים חזרה למלון Hotel Cenacolo לאורך הלילה",
+          ru: "Открытый бар и танцы · Организованные шаттлы обратно в Hotel Cenacolo",
+          en: "Open bar & dancing · Return shuttles to Hotel Cenacolo throughout the night",
+          he: "בר פתוח וריקודים · שאטלים חזרה למלון Hotel Cenacolo לאורך הלילה",
         },
       },
     ],
@@ -277,9 +268,9 @@ const CONTENT = {
   /* ── Attire & Dress Code (Formal Garden Party) ──────────── */
   attire: {
     sectionTitle: {
-      ru: "Дресс-код и стиль",
+      ru: "Дресс-код",
       en: "Attire & Dress Code",
-      he: "קוד לבוש וסגנון",
+      he: "קוד לבוש",
     },
     vibe: {
       ru: "Элегантный садовый стиль",
@@ -287,14 +278,14 @@ const CONTENT = {
       he: "מסיבת גן אלגנטית",
     },
     subtitle: {
-      ru: "Элегантная торжественность в цветущих садах замка Castello Petrata",
-      en: "Summery formal elegance amidst the blooming gardens of Castello Petrata",
-      he: "אלגנטיות קיצית ורומנטית בין גני האירוע של קסטלו פטרטה",
+      ru: "",
+      en: "",
+      he: "",
     },
     intro: {
-      ru: "Наше свадебное торжество пройдет под открытым небом в окружении холмов Умбрии и живописных оливковых рощ замка Castello Petrata. Мы приглашаем наших гостей поддержать элегантный стиль торжества в саду — утонченный, романтичный и праздничный.",
-      en: "Our wedding celebration takes place outdoors surrounded by the rolling Umbrian hills and olive groves of Castello Petrata. We invite our guests to embrace a chic Formal Garden Party aesthetic — elevated, romantic, and light.",
-      he: "החתונה שלנו תתקיים תחת כיפת השמיים בין גבעות אומבריה ומטעי הזיתים של קסטלו פטרטה. נשמח לחגוג יחד באווירת מסיבת גן אלגנטית וחגיגית — קלילה, קיצית ורומנטית.",
+      ru: "Наше свадебное торжество пройдет под открытым небом в окружении холмов Умбрии и оливковых рощ замка Castello Petrata.",
+      en: "Our wedding celebration takes place outdoors surrounded by the rolling Umbrian hills and olive groves of Castello Petrata.",
+      he: "החתונה שלנו תתקיים תחת כיפת השמיים בין גבעות אומבריה ומטעי הזיתים של קסטלו פטרטה.",
     },
     cards: [
       {
@@ -328,14 +319,14 @@ const CONTENT = {
         },
         items: [
           {
-            ru: "Натуральные льняные и хлопковые ткани идеально подойдут для теплого итальянского вечера.",
+            ru: "Натуральные льняные и хлопковые ткани идеально подойдут для теплого итальянского вечера. (Для мужчин нет ограничений по цветовой палитре)",
             en: "Linen, cotton, and breathable fabrics are encouraged for a comfortable Italian evening.",
-            he: "בדי פשתן וכותנה קלילים מושלמים לערב איטלקי נעים וחגיגי.",
+            he: "בדי פשתן וכותנה קלילים מושלמים לערב איטלקי נעים וחגיגי. (אין חובת צבעי פסטל)",
           },
           {
-            ru: "Галстук не обязателен — непринужденная торжественность приветствуется. Лоферы или классическая легкая обувь.",
-            en: "Ties are not required — effortless formal style is welcomed. Loafers or dress shoes.",
-            he: "עניבות אינן חובה — סגנון חגיגי וקליל מבורך. מוקסינים או נעלי ערב קלילות.",
+            ru: "Галстук не обязателен — непринужденная торжественность приветствуется.",
+            en: "Ties are not mandatory — effortless formal style is welcomed. (no color code for men)",
+            he: "עניבות אינן חובה — סגנון חגיגי וקליל מבורך.",
           },
         ],
       },
@@ -346,21 +337,21 @@ const CONTENT = {
       he: "פלטת צבעים להשראה",
     },
     paletteSubtitle: {
-      ru: "Мягкие пастельные тона, вдохновленные цветущей природой Умбрии",
-      en: "Soft pastels inspired by the blooming Umbrian landscape",
-      he: "גווני פסטל רכים בהשראת הנוף הפורח של אומבריה",
+      ru: "Мягкие пастельные тона",
+      en: "Soft pastels",
+      he: "פסטלים רכים",
     },
     swatches: [
       {
-        name: { ru: "Небесно-голубой", en: "Sky Blue", he: "תכלת שמיים" },
+        name: { ru: "Светло-голубой", en: "Sky Blue", he: "תכלת בהיר" },
         hex: "#BBD7EC",
       },
       {
-        name: { ru: "Нежно-розовый", en: "Pale Blush", he: "ורוד בלאש" },
+        name: { ru: "Светло-розовый", en: "Pale Blush", he: "ורוד בהיר" },
         hex: "#F7D2D6",
       },
       {
-        name: { ru: "Сливочный желтый", en: "Butter Yellow", he: "צהוב חמאה" },
+        name: { ru: "Светло-желтый", en: "Butter Yellow", he: "צהוב בהיר" },
         hex: "#FBF0B9",
       },
       {
@@ -368,7 +359,7 @@ const CONTENT = {
         hex: "#FAD4B5",
       },
       {
-        name: { ru: "Фисташковый", en: "Pale Pistachio", he: "ירוק פיסטוק" },
+        name: { ru: "Светло-зеленый", en: "Pale Pistachio", he: "ירוק בהיר" },
         hex: "#C8DBBC",
       },
       {
@@ -382,9 +373,9 @@ const CONTENT = {
       he: "צבעים שמורים",
     },
     reservedSubtitle: {
-      ru: "Пожалуйста, воздержитесь от выбора нарядов в следующих цветах:",
-      en: "Please kindly refrain from wearing these specific colors:",
-      he: "נבקש מכל הלב להימנע מבחירת בגדים בצבעים הבאים:",
+      ru: "Пожалуйста, воздержитесь от следующих цветов:",
+      en: "Please kindly refrain from wearing these colors:",
+      he: "אנא הימנעו מללבוש את הצבעים הבאים:",
     },
     reservedItems: [
       {
@@ -397,9 +388,9 @@ const CONTENT = {
           he: "לבן ושמנת",
         },
         reservedFor: {
-          ru: "Зарезервирован исключительно для невесты",
-          en: "Reserved exclusively for the Bride",
-          he: "שמור באופן בלעדי לכלה",
+          ru: "Только для невесты",
+          en: "Reserved for the Bride",
+          he: "שמור לכלה",
         },
       },
       {
@@ -412,9 +403,9 @@ const CONTENT = {
           he: "טוקסידו שחור",
         },
         reservedFor: {
-          ru: "Зарезервирован для смокинга жениха",
-          en: "Reserved for the Groom's Tuxedo",
-          he: "שמור לטוקסידו של החתן",
+          ru: "Только для жениха",
+          en: "Reserved for the Groom",
+          he: "שמור לחתן",
         },
       },
     ],
@@ -510,17 +501,17 @@ const CONTENT = {
     trainSection: {
       title: { ru: "🚆 На поезде", en: "🚆 Traveling by Train", he: "🚆 נסיעה ברכבת" },
       intro: {
-        ru: "До места можно добраться от железнодорожных вокзалов Перуджи и Ассизи.",
-        en: "The venue is accessible from Perugia and Assisi railway stations.",
-        he: "המקום נגיש מתחנות הרכבת של פרוג'ה ואסיסי.",
+        ru: "До отеля легко добраться от железнодорожного вокзала Ассизи.",
+        en: "The Hotel is accessible from Assisi railway station.",
+        he: "המקום נגיש מתחנת הרכבת של אסיסי.",
       },
       routes: [
         {
           from: { ru: "Из Рима", en: "From Rome", he: "מרומא" },
           desc: {
-            ru: "Поезд до станции Perugia или Assisi, затем на такси (~20 мин) или свадебном шаттле до места проведения.",
-            en: "Take a train to Perugia or Assisi, then continue by taxi (~20 min) or our wedding shuttle to the venue.",
-            he: "קחו רכבת לפרוג'ה או אסיסי, ואז המשיכו במונית (~20 דק') או בשאטל החתונה שלנו למקום.",
+            ru: "Поезд до Ассизи, далее на такси прямо до отеля.",
+            en: "Take a train to Assisi, then continue by taxi directly to the hotel",
+            he: "קחו רכבת לאסיסי, ואז המשיכו במונית ישירות למלון",
           },
         },
       ],
@@ -656,9 +647,9 @@ const CONTENT = {
     sectionTitle: { ru: "Подарки", en: "A Little Gift", he: "מתנה" },
     detailsToggle: { ru: "Подробнее", en: "For more details", he: "לפרטים נוספים" },
     intro: {
-      ru: "Ваше присутствие на нашей свадьбе — самый главный и ценный подарок для нас! Если вы захотите поздравить нас подарком, вы можете воспользоваться реквизитами ниже ❤️",
-      en: "Your presence at our wedding is the greatest gift of all. If you would like to honor us with a gift toward our future together, details are below ❤️",
-      he: "נוכחותכם ביום המיוחד שלנו היא המתנה הגדולה והיקרה מכל. אם תרצו להעניק לנו מתנה לתחילת דרכנו המשותפת, הפרטים מופיעים להלן ❤️",
+      ru: "Ваше присутствие на нашей свадьбе — самый главный и ценный подарок для нас! Ваша любовь и поддержка значат для нас всё. Если вы все же захотите помочь нам построить наше общее будущее, реквизиты указаны ниже ❤️",
+      en: "Your presence at our wedding is the greatest gift of all. Your love and support mean the world to us! If you wish to contribute to our future together, you can find our details below❤️",
+      he: "נוכחותכם ביום המיוחד שלנו היא המתנה הגדולה והיקרה מכל. אם בכל זאת תרצו לתת לנו מתנה שתעזור לנו לבנות את עתידנו המשותף נשמח ונודה לכם מאוד. הפרטים מופיעים למטה ❤️",
     },
     options: [
       {
@@ -726,7 +717,7 @@ const CONTENT = {
     intro: {
       ru: "Мы с нетерпением ждем возможности отпраздновать этот особенный день вместе с вами! Пожалуйста, заполните форму ниже, чтобы подтвердить ваше участие.",
       en: "We cannot wait to celebrate this magical weekend with you! Please complete the form below to let us know if you can join us.",
-      he: "אנחנו מתרגשים ומצפים לחגוג את סוף השבוע המיוחד הזה יחד איתכם! אנא מלאו את הטופס להלן כדי לאשר את הגעתכם.",
+      he: "אנחנו מתרגשים ומצפים לחגוג את סוף השבוע המיוחד הזה יחד איתכם! אנא מלאו את הטופס כדי לאשר את הגעתכם.",
     },
     formUrls: {
       ru: "https://docs.google.com/forms/d/e/1FAIpQLSeN_XzomUuujakBnHD3ca6DrNtGBi2zTyas3zG6RTqucaCTrw/viewform?embedded=true",
@@ -738,7 +729,7 @@ const CONTENT = {
     calendar: {
       label: { ru: "Добавить в Google Календарь", en: "Add to Google Calendar", he: "הוסף ליומן Google" },
       icon: `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19 4h-1V2h-2v2H8V2H6v2H5C3.9 4 3 4.9 3 6v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11zM5 7V6h14v1H5zm2 4h10v2H7zm0 4h7v2H7z"/></svg>`,
-      url: "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Ron+%26+Dana%27s+Wedding&dates=20270522T120000Z%2F20270524T080000Z&details=Ron+%26+Dana%27s+Wedding%21%0A%0A%E2%80%A2+Guest+Hotel%3A+Hotel+Cenacolo%2C+Assisi+%28Check-in+Saturday+May+22+at+14%3A00%2C+Check-out+Monday+May+24+at+10%3A00%29%0A%E2%80%A2+Wedding+Venue%3A+Castello+Petrata%2C+Assisi%0A%E2%80%A2+Wedding+Day%3A+Sunday+May+23+%28Shuttle+16%3A30+%C2%B7+Gathering+17%3A00+%C2%B7+Ceremony+17%3A30+%C2%B7+Aperitivo+18%3A00+%C2%B7+Dinner+20%3A00+%C2%B7+Party+22%3A00%29&location=Castello+Petrata%2C+Localit%C3%A0+Petrata+22%2C+06081+Assisi+PG%2C+Italy&ctz=Europe/Rome",
+      url: "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Ron+%26+Dana%27s+Wedding&dates=20270522T120000Z%2F20270524T080000Z&details=Ron+%26+Dana%27s+Wedding%21%0A%0A%E2%80%A2+Guest+Hotel%3A+Hotel+Cenacolo%2C+Assisi+%28Check-in+Saturday+May+22+at+14%3A00%2C+Check-out+Monday+May+24+at+10%3A00%29%0A%E2%80%A2+Wedding+Venue%3A+Castello+Petrata%2C+Assisi%0A%E2%80%A2+Wedding+Day%3A+Sunday+May+23+%28Shuttle+15%3A30+%C2%B7+Gathering+16%3A00+%C2%B7+Ceremony+16%3A30+%C2%B7+Aperitivo+17%3A00+%C2%B7+Dinner+19%3A00+%C2%B7+Party+21%3A00%29&location=Castello+Petrata%2C+Localit%C3%A0+Petrata+22%2C+06081+Assisi+PG%2C+Italy&ctz=Europe/Rome",
     },
   },
 
@@ -747,7 +738,7 @@ const CONTENT = {
     text: {
       ru: "С любовью, Рон и Дана · 23 мая 2027",
       en: "With love, Ron & Dana · May 23, 2027",
-      he: "באהבה, רון ודנה · 23 במאי 2027",
+      he: "אוהבים, רון ודנה · 23 במאי 2027",
     },
   },
 

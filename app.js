@@ -526,7 +526,7 @@ function renderDetails() {
 
     div.innerHTML = `
       <span class="detail-icon" aria-hidden="true">${card.icon}</span>
-      <h3>${t(card.title)}</h3>
+      ${t(card.title) ? `<h3>${t(card.title)}</h3>` : ''}
       ${linesHtml}
     `;
 
@@ -585,12 +585,8 @@ function renderAttire() {
   const { attire } = CONTENT;
   if (!attire) return;
 
-  const eyebrow = {
-    ru: "ДРЕСС-КОД",
-    en: "DRESS CODE",
-    he: "קוד לבוש",
-  };
-  setText('attire-eyebrow', eyebrow);
+  const eyebrowEl = document.getElementById('attire-eyebrow');
+  if (eyebrowEl) eyebrowEl.remove();
   setText('attire-title', attire.sectionTitle);
   setText('attire-vibe', attire.vibe);
   setText('attire-subtitle', attire.subtitle);
@@ -820,18 +816,18 @@ function renderTravel() {
   const co = travel.coachSection;
   const coachWrap = document.createElement('div');
   coachWrap.className = 'travel-section reveal visible';
-  const stepsHtml = co.steps.map((s, i) => `
+  const stepsHtml = (co.steps || []).map((s, i) => `
     <li class="travel-step"><span class="travel-step-num">${i + 1}</span>${t(s)}</li>
   `).join('');
-  const coachChips = co.companies.map(c => `
+  const coachChips = (co.companies || []).map(c => `
     <a href="${c.url}" class="travel-app-chip" target="_blank" rel="noopener">🚌 ${c.name}</a>
   `).join('');
   coachWrap.innerHTML = `
     <h3 class="travel-subtitle">${t(co.title)}</h3>
     <p class="travel-text">${t(co.intro)}</p>
-    <p class="travel-route-title">${t(co.routeTitle)}</p>
-    <ol class="travel-steps">${stepsHtml}</ol>
-    <div class="travel-chips">${coachChips}</div>
+    ${co.routeTitle && t(co.routeTitle) ? `<p class="travel-route-title">${t(co.routeTitle)}</p>` : ''}
+    ${stepsHtml ? `<ol class="travel-steps">${stepsHtml}</ol>` : ''}
+    ${coachChips ? `<div class="travel-chips">${coachChips}</div>` : ''}
   `;
   container.appendChild(coachWrap);
 
