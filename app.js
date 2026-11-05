@@ -590,7 +590,6 @@ function renderAttire() {
   setText('attire-title', attire.sectionTitle);
   setText('attire-vibe', attire.vibe);
   setText('attire-subtitle', attire.subtitle);
-  setHtml('attire-intro', attire.intro);
 
   // Cards (Ladies / Men)
   const cardsGrid = document.getElementById('attire-cards-grid');
@@ -816,8 +815,9 @@ function renderTravel() {
   const co = travel.coachSection;
   const coachWrap = document.createElement('div');
   coachWrap.className = 'travel-section reveal visible';
-  const stepsHtml = (co.steps || []).map((s, i) => `
-    <li class="travel-step"><span class="travel-step-num">${i + 1}</span>${t(s)}</li>
+  const stepsList = (co.steps || []).map(s => t(s)).filter(Boolean);
+  const stepsHtml = stepsList.map((stepText, i) => `
+    <li class="travel-step"><span class="travel-step-num">${i + 1}</span>${stepText}</li>
   `).join('');
   const coachChips = (co.companies || []).map(c => `
     <a href="${c.url}" class="travel-app-chip" target="_blank" rel="noopener">🚌 ${c.name}</a>

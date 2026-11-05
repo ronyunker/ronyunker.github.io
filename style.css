@@ -111,7 +111,6 @@ ul, ol {
 [dir="rtl"] .detail-card h3,
 [dir="rtl"] .schedule-label,
 [dir="rtl"] .attire-eyebrow,
-[dir="rtl"] .attire-subtitle,
 [dir="rtl"] .attire-card-title,
 [dir="rtl"] .attire-palette-title,
 [dir="rtl"] .attire-reserved-title,
@@ -1201,20 +1200,12 @@ h1, h2, h3, h4 {
 }
 
 .attire-subtitle {
-  font-family: var(--font-heading);
-  font-size: 1.02rem;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--color-text-muted);
-  margin-bottom: 1.25rem;
-  font-weight: 400;
-}
-
-.attire-intro {
-  font-size: 1rem;
-  color: var(--color-text-light);
+  font-size: 1.05rem;
   line-height: 1.8;
+  color: var(--color-text-light);
+  max-width: 650px;
   margin: 0 auto;
+  font-weight: 400;
 }
 
 /* Attire Cards Grid (Ladies & Men) */

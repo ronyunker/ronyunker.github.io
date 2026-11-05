@@ -269,7 +269,7 @@ const CONTENT = {
   attire: {
     sectionTitle: {
       ru: "Дресс-код",
-      en: "Dress code",
+      en: "Attire & Dress Code",
       he: "קוד לבוש",
     },
     vibe: {
@@ -278,11 +278,6 @@ const CONTENT = {
       he: "Formal garden party",
     },
     subtitle: {
-      ru: "",
-      en: "",
-      he: "",
-    },
-    intro: {
       ru: "Наше свадебное торжество пройдет под открытым небом в окружении холмов Умбрии и оливковых рощ замка Castello Petrata.",
       en: "Our wedding celebration takes place outdoors surrounded by the rolling Umbrian hills and olive groves of Castello Petrata.",
       he: "החתונה שלנו תתקיים תחת כיפת השמיים בין גבעות אומבריה ומטעי הזיתים של קסטלו פטרטה.",
@@ -389,7 +384,7 @@ const CONTENT = {
         },
         reservedFor: {
           ru: "Только для невесты",
-          en: "Reserved for the Bride",
+          en: "Reserved exclusively for the Bride",
           he: "שמור לכלה",
         },
       },
@@ -404,7 +399,7 @@ const CONTENT = {
         },
         reservedFor: {
           ru: "Только для жениха",
-          en: "Reserved for the Groom",
+          en: "Reserved for the Groom's Tuxedo",
           he: "שמור לחתן",
         },
       },
@@ -539,42 +534,29 @@ const CONTENT = {
     coachSection: {
       title: { ru: "🚌 На автобусе", en: "🚌 Traveling by Bus", he: "🚌 נסיעה באוטובוס" },
       intro: {
-        ru: "Из аэропорта Рим Фьюмичино (FCO) курсирует прямой автобус до Ассизи компании Sulga, далее на такси прямо до отеля.",
-        en: "Several bus companies connect Rome to Assisi. Direct bus service runs from Rome Fiumicino (FCO) to Assisi with Sulga, followed by a short taxi directly to the hotel.",
+        ru: "Несколько автобусных компаний связывают Рим и Ассизи.",
+        en: "Several bus companies connect Rome to Assisi.",
         he: "ישנו אוטובוס ישיר לאסיסי מהשדה עם חברת Sulga ומשם קחו מונית ישירות למלון",
       },
       routeTitle: {
         ru: "Рекомендуемый маршрут из Рима Фьюмичино (FCO)",
         en: "Suggested route from Rome Fiumicino (FCO)",
-        he: "מסלול מומלץ מרומא פיומיצ'ינו (FCO)",
+        he: "",
       },
       steps: [
         {
           ru: "Прибытие в аэропорт Рим Фьюмичино (FCO).",
           en: "Arrive at Rome Fiumicino Airport (FCO).",
-          he: "הגעה לנמל תעופה רומא פיומיצ'ינו (FCO).",
+          he: "",
         },
         {
-          ru: "Поезд Leonardo Express или региональный поезд до Roma Termini (или Roma Tiburtina).",
-          en: "Take the Leonardo Express or regional train to Rome Termini (or Rome Tiburtina).",
-          he: "קחו את לאונרדו אקספרס או רכבת אזורית לרומא טרמיני (או רומא טיבורטינה).",
-        },
-        {
-          ru: "С вокзала Roma Termini или Tiburtina — прямой автобус до Перуджи или Ассизи.",
-          en: "From Rome Termini or Tiburtina, take a direct bus to Perugia or Assisi.",
-          he: "מרומא טרמיני או טיבורטינה, קחו אוטובוס ישיר לפרוג'ה או אסיסי.",
-        },
-        {
-          ru: "Из Перуджи или Ассизи — местное такси или свадебный шаттл.",
-          en: "From Perugia or Assisi, take a local taxi or our wedding shuttle.",
-          he: "מפרוג'ה או אסיסי, קחו מונית מקומית או את שאטל החתונה שלנו.",
+          ru: "Рим Фьюмичино (FCO) — прямой автобус до Ассизи (Sulga), далее на такси напрямую до отеля.",
+          en: "Rome Fiumicino (FCO) take a direct bus to assisi (Sulga), then continue by taxi directly to the hotel",
+          he: "",
         },
       ],
       companies: [
-        { name: "MarinoBus", url: "https://www.marinobus.it/en/" },
-        { name: "Itabus",    url: "https://www.itabus.it/en" },
-        { name: "FlixBus",   url: "https://www.flixbus.it/" },
-        { name: "Sulga",     url: "https://www.sulga.eu/en/" },
+        { name: "Sulga", url: "https://www.sulga.eu/en/" },
       ],
     },
     carSection: {
@@ -629,7 +611,6 @@ const CONTENT = {
         { emoji: "🔍", name: "Omio",        url: "https://www.omio.com/",                  desc: { ru: "Поиск поездов и автобусов (лучше заказывать на оф. сайте)", en: "Search trains & buses (better to order from official site)", he: "חיפוש רכבות ואוטובוסים (עדיף להזמין באתר הרשמי)" } },
         { emoji: "🚆", name: "Trainline",   url: "https://www.thetrainline.com/",          desc: { ru: "Поиск и бронирование поездов всех операторов", en: "Search & book trains across all operators", he: "חיפוש והזמנת רכבות אצל כל המפעילים" } },
         { emoji: "🚆", name: "Trenitalia",  url: "https://www.trenitalia.com/en.html",     desc: { ru: "Официальное приложение итальянских поездов", en: "Official Italian railway network", he: "רשת הרכבות האיטלקית הרשמית" } },
-        { emoji: "🚌", name: "FlixBus",     url: "https://www.flixbus.it/",               desc: { ru: "Бронирование междугородних автобусов", en: "Long-distance bus booking", he: "הזמנת אוטובוסים לטווח ארוך" } },
         { emoji: "🗺️", name: "Google Maps", url: "https://maps.google.com",               desc: { ru: "Маршруты и расписание транспорта онлайн", en: "Plan routes and check live transit", he: "תכנון מסלולים ובדיקת תחבורה ציבורית בזמן אמת" } },
         { emoji: "🚍", name: "Moovit",      url: "https://moovitapp.com/",                desc: { ru: "Помощник по местному общественному транспорту", en: "Local public transportation helper", he: "עזרה לתחבורה ציבורית מקומית" } },
       ],
@@ -657,28 +638,28 @@ const CONTENT = {
         title: { ru: "Банковский перевод", en: "Bank Transfer", he: "העברה בנקאית" },
         text:  {
           ru: "Реквизиты для банковского перевода:",
-          en: "Account details for bank transfer:",
-          he: "פרטי חשבון להעברה בנקאית:",
+          en: "Account details for bank transfer in NIS:",
+          he: "פרטי חשבון להעברה בנקאית :",
         },
         details: [
           {
-            label: { ru: "Получатель", en: "Recipient", he: "מוטב" },
+            label: { ru: "Получатель", en: "מוטב", he: "מוטב" },
             value: {
-              ru: "Ron Yunker (רון יונקר)",
-              en: "Ron Yunker (רון יונקר)",
+              ru: "רון יונקר",
+              en: "רון יונקר",
               he: "רון יונקר",
             },
           },
           {
-            label: { ru: "Банк и отделение", en: "Bank & Branch", he: "בנק וסניף" },
+            label: { ru: "Банк и отделение", en: "מספר בנק", he: "בנק וסניף" },
             value: {
               ru: "Bank Yahav (04), отд. 141",
-              en: "Bank Yahav (04), Branch 141",
+              en: "יהב 04 , סניף 141",
               he: "בנק יהב 04, סניף 141",
             },
           },
           {
-            label: { ru: "Номер счета", en: "Account Number", he: "מספר חשבון" },
+            label: { ru: "Номер счета", en: "מספר חשבון", he: "מספר חשבון" },
             value: {
               ru: "140852",
               en: "140852",
@@ -694,7 +675,7 @@ const CONTENT = {
         title: { ru: "Bit", en: "Bit", he: "Bit" },
         text:  {
           ru: "Перевод через Bit: 0523595288",
-          en: "Transfer via Bit: 0523595288",
+          en: "0523595288",
           he: "העברה בביט - 0523595288",
         },
         url:   "",
