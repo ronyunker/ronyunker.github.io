@@ -269,13 +269,13 @@ const CONTENT = {
   attire: {
     sectionTitle: {
       ru: "Дресс-код",
-      en: "Attire & Dress Code",
+      en: "Dress code",
       he: "קוד לבוש",
     },
     vibe: {
-      ru: "Элегантный садовый стиль",
+      ru: "Formal Garden Party",
       en: "Formal Garden Party",
-      he: "מסיבת גן אלגנטית",
+      he: "Formal garden party",
     },
     subtitle: {
       ru: "",
@@ -420,16 +420,16 @@ const CONTENT = {
       he: "Castello Petrata ומלון Hotel Cenacolo",
     },
     description: {
-      ru: "Свадебная церемония, праздничный ужин и вечеринка пройдут в старинной крепости XIV века <strong>Castello Petrata</strong> в Ассизи с панорамным видом на долину Умбрии.<br><br>Все наши гости будут с комфортом размещены в отеле <strong>Hotel Cenacolo</strong> (Ассизи). Между отелем и замком организован комфортабельный трансфер (шаттлы) на все праздничные мероприятия!",
-      en: "Our wedding ceremony, dinner, and party will take place at the historic 14th-century fortress <strong>Castello Petrata</strong> in Assisi, overlooking the stunning Umbrian countryside.<br><br>All attending guests will be hosted at <strong>Hotel Cenacolo</strong> in Assisi. Dedicated round-trip shuttles will be provided between Hotel Cenacolo and Castello Petrata throughout the celebrations!",
-      he: "טקס החופה, ארוחת הערב והמסיבה יתקיימו במבצר ההיסטורי מהמאה ה-14 <strong>Castello Petrata</strong> שבאסיסי, המשקיף על נוף עוצר נשימה של עמק אומבריה.<br><br>כל אורחינו היקרים יתארחו במלון <strong>Hotel Cenacolo</strong> שבאסיסי. שאטלים ייעודיים הלוך וחזור יופעלו בין המלון לטירה לאורך כל החגיגות!",
+      ru: "Свадебная церемония, ужин и вечеринка пройдут в исторической крепости XIV века <strong>Castello Petrata</strong> в Ассизи с захватывающим видом на холмы Умбрии.<br><br>Все гости размещаются в отеле <strong>Hotel Cenacolo</strong> в Ассизи.",
+      en: "Our wedding ceremony, dinner, and party will take place at the historic 14th-century fortress <strong>Castello Petrata</strong> in Assisi, overlooking the stunning Umbrian countryside.<br><br>All attending guests will be hosted at <strong>Hotel Cenacolo</strong> in Assisi.",
+      he: "טקס החופה, ארוחת הערב והמסיבה יתקיימו במבצר ההיסטורי מהמאה ה-14 <strong>Castello Petrata</strong> שבאסיסי, המשקיף על נוף עוצר נשימה של עמק אומבריה.<br><br>כל אורחינו היקרים יתארחו במלון <strong>Hotel Cenacolo</strong> שבאסיסי.",
     },
     accommodationCallout: {
       icon: "🚌",
       text: {
-        ru: "Проживание гостей организовано в <strong>Hotel Cenacolo</strong> (Ассизи) на весь уикенд (22–24 мая). Между Hotel Cenacolo и Castello Petrata будут курсировать шаттлы на все праздничные события!",
-        en: "Guest accommodation is arranged at <strong>Hotel Cenacolo</strong> (Assisi) for the entire weekend (May 22–24). Shuttle service will run between Hotel Cenacolo and Castello Petrata for all wedding celebrations!",
-        he: "אירוח האורחים מוסדר במלון <strong>Hotel Cenacolo</strong> (אסיסי) לכל סוף השבוע (22–24 במאי). שאטלים מאורגנים יפעלו בין המלון לקסטלו פטרטה לכל אירועי החתונה!",
+        ru: "Проживание в отеле <strong>Hotel Cenacolo</strong> (Ассизи) включено для всех гостей на все выходные (22–24 мая). В день свадьбы между отелем Cenacolo и замком Castello Petrata будут курсировать шаттлы!",
+        en: "Accommodation is included for all guests at <strong>Hotel Cenacolo</strong> (Assisi) for the entire weekend (May 22–24). Shuttle service will run between Hotel Cenacolo and Castello Petrata for the wedding celebration!",
+        he: "האירוח במלון כלול לכל האורחים לכל סוף השבוע (22-24 במאי) שאטלים יפעלו בין המלון לקסטלו פטרטה ביום האירוע!",
       },
     },
     castle: {
@@ -460,9 +460,9 @@ const CONTENT = {
         he: "Viale Patrono d'Italia 70, 06081 Santa Maria degli Angeli, Assisi (PG), איטליה",
       },
       note: {
-        ru: "Заезд: суббота 22 мая с 14:00 · Выезд: понедельник 24 мая до 10:00. Трансфер в замок и обратно включен!",
-        en: "Check-in: Saturday May 22 from 14:00 · Check-out: Monday May 24 by 10:00. Shuttles to/from castle included!",
-        he: "צ'ק-אין: שבת 22 במאי מ-14:00 · צ'ק-אאוט: שני 24 במאי עד 10:00. שאטלים לטירה ובחזרה כלולים!",
+        ru: "Заезд: суббота 22 мая с 14:00 · Выезд: понедельник 24 мая до 10:00. Городской налог оплачивается гостями самостоятельно — 3 евро с человека за ночь!",
+        en: "Check-in: Saturday May 22 from 14:00 · Check-out: Monday May 24 by 10:00. city tax must be paid by the guests - 3 euro per person per night!",
+        he: "צ'ק-אין: שבת 22 במאי מ-14:00 · צ'ק-אאוט: שני 24 במאי עד 10:00. על האורחים לשלם את מס העיר בסך שלושה יורו לאדם לכל לילה!",
       },
       websiteUrl: "https://www.hotelcenacolo.com/",
       directionsUrl: "https://maps.google.com/?q=Hotel+Cenacolo+Viale+Patrono+d%27Italia+70+Assisi",
@@ -539,9 +539,9 @@ const CONTENT = {
     coachSection: {
       title: { ru: "🚌 На автобусе", en: "🚌 Traveling by Bus", he: "🚌 נסיעה באוטובוס" },
       intro: {
-        ru: "Несколько автобусных компаний связывают Рим и Флоренцию с Перуджей и Ассизи.",
-        en: "Several bus companies connect Rome and Florence to Perugia and Assisi.",
-        he: "מספר חברות אוטובוס מחברות את רומא ופירנצה לפרוג'ה ואסיסי.",
+        ru: "Из аэропорта Рим Фьюмичино (FCO) курсирует прямой автобус до Ассизи компании Sulga, далее на такси прямо до отеля.",
+        en: "Several bus companies connect Rome to Assisi. Direct bus service runs from Rome Fiumicino (FCO) to Assisi with Sulga, followed by a short taxi directly to the hotel.",
+        he: "ישנו אוטובוס ישיר לאסיסי מהשדה עם חברת Sulga ומשם קחו מונית ישירות למלון",
       },
       routeTitle: {
         ru: "Рекомендуемый маршрут из Рима Фьюмичино (FCO)",
@@ -635,9 +635,9 @@ const CONTENT = {
       ],
     },
     contactNote: {
-      ru: "Если у вас есть любые вопросы по маршруту до места проведения — свяжитесь с нами, мы с радостью поможем!",
-      en: "If you have any questions about getting to the venue, feel free to contact us — we'll be happy to help!",
-      he: "לכל שאלה על הגעה למקום, אל תהססו לפנות אלינו — נשמח לעזור!",
+      ru: "Если у вас есть вопросы о том, как добраться до отеля, пожалуйста, свяжитесь с нами — мы с радостью поможем!",
+      en: "If you have any questions about getting to the Hotel, feel free to contact us — we'll be happy to help!",
+      he: "לכל שאלה תרגישו חופשי לפנות אלינו נשמח לעזור!",
     },
   },
 
@@ -656,41 +656,33 @@ const CONTENT = {
         icon:  "🏦",
         title: { ru: "Банковский перевод", en: "Bank Transfer", he: "העברה בנקאית" },
         text:  {
-          ru: "Реквизиты для банковского перевода в евро (EUR):",
-          en: "Account details for bank transfer in EUR:",
-          he: "פרטי חשבון להעברה בנקאית ביורו (EUR):",
+          ru: "Реквизиты для банковского перевода:",
+          en: "Account details for bank transfer:",
+          he: "פרטי חשבון להעברה בנקאית:",
         },
         details: [
           {
             label: { ru: "Получатель", en: "Recipient", he: "מוטב" },
             value: {
-              ru: "Рон и Дана [Заполнитель: имя владельца счета]",
-              en: "Ron & Dana [Placeholder: Account Holder Name]",
-              he: "רון ודנה [מקום למילוי: שם בעל החשבון]",
+              ru: "Ron Yunker (רון יונקר)",
+              en: "Ron Yunker (רון יונקר)",
+              he: "רון יונקר",
             },
           },
           {
-            label: "IBAN",
+            label: { ru: "Банк и отделение", en: "Bank & Branch", he: "בנק וסניף" },
             value: {
-              ru: "[Заполнитель: номер счета / IBAN]",
-              en: "[Placeholder: IBAN / Account Number]",
-              he: "[מקום למילוי: מספר חשבון / IBAN]",
+              ru: "Bank Yahav (04), отд. 141",
+              en: "Bank Yahav (04), Branch 141",
+              he: "בנק יהב 04, סניף 141",
             },
           },
           {
-            label: "SWIFT / BIC",
+            label: { ru: "Номер счета", en: "Account Number", he: "מספר חשבון" },
             value: {
-              ru: "[Заполнитель: код SWIFT / BIC]",
-              en: "[Placeholder: SWIFT / BIC Code]",
-              he: "[מקום למילוי: קוד SWIFT / BIC]",
-            },
-          },
-          {
-            label: { ru: "Банк", en: "Bank Name", he: "שם הבנק" },
-            value: {
-              ru: "[Заполнитель: название банка и отделение]",
-              en: "[Placeholder: Bank Name & Branch]",
-              he: "[מקום למילוי: שם הבנק והסניף]",
+              ru: "140852",
+              en: "140852",
+              he: "140852",
             },
           },
         ],
@@ -699,11 +691,11 @@ const CONTENT = {
       },
       {
         icon:  "📱",
-        title: { ru: "Bit / Paybox", en: "Bit / Paybox", he: "Bit או Paybox" },
+        title: { ru: "Bit", en: "Bit", he: "Bit" },
         text:  {
-          ru: "Перевод через Bit или Paybox: [Номер телефона: 05X-XXXXXXX]",
-          en: "Transfer via Bit or Paybox: [Phone number: 05X-XXXXXXX]",
-          he: "העברה דרך Bit או Paybox: [מספר טלפון: 05X-XXXXXXX]",
+          ru: "Перевод через Bit: 0523595288",
+          en: "Transfer via Bit: 0523595288",
+          he: "העברה בביט - 0523595288",
         },
         url:   "",
         label: { ru: "", en: "", he: "" },
