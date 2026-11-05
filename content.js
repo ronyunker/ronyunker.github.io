@@ -52,8 +52,8 @@ const CONTENT = {
 
   /* ── Hero ───────────────────────────────────────────────── */
   hero: {
-    backgroundImage:       "images/hero_bg.jpeg",
-    backgroundImageMobile: "images/hero_bg.jpeg",
+    backgroundImage:       "images/hero_bg.webp",
+    backgroundImageMobile: "images/hero_bg.webp",
     overlayOpacity:        0.45,
     venueLabel: {
       ru: "Castello Petrata · Ассизи, Умбрия, Италия",
@@ -83,13 +83,13 @@ const CONTENT = {
       he: "הרגעים האהובים עלינו עד כה",
     },
     images: [
-      { src: "images/carousel_1.jpg", alt: { ru: "Рон и Дана", en: "Ron & Dana", he: "רון ודנה" } },
-      { src: "images/carousel_2.jpg", alt: { ru: "Рон и Дана", en: "Ron & Dana", he: "רון ודנה" } },
-      { src: "images/carousel_3.jpg", alt: { ru: "Рон и Дана", en: "Ron & Dana", he: "רון ודנה" } },
-      { src: "images/carousel_4.jpg", alt: { ru: "Рон и Дана", en: "Ron & Dana", he: "רון ודנה" } },
-      { src: "images/carousel_5.jpg", alt: { ru: "Рон и Дана", en: "Ron & Dana", he: "רון ודנה" } },
-      { src: "images/carousel_6.jpg", alt: { ru: "Рон и Дана", en: "Ron & Dana", he: "רון ודנה" } },
-      { src: "images/carousel_7.jpg", alt: { ru: "Рон и Дана", en: "Ron & Dana", he: "רון ודנה" } },
+      { src: "images/carousel_1.webp", alt: { ru: "Рон и Дана", en: "Ron & Dana", he: "רון ודנה" } },
+      { src: "images/carousel_2.webp", alt: { ru: "Рон и Дана", en: "Ron & Dana", he: "רון ודנה" } },
+      { src: "images/carousel_3.webp", alt: { ru: "Рон и Дана", en: "Ron & Dana", he: "רון ודנה" } },
+      { src: "images/carousel_4.webp", alt: { ru: "Рон и Дана", en: "Ron & Dana", he: "רון ודנה" } },
+      { src: "images/carousel_5.webp", alt: { ru: "Рон и Дана", en: "Ron & Dana", he: "רון ודנה" } },
+      { src: "images/carousel_6.webp", alt: { ru: "Рон и Дана", en: "Ron & Dana", he: "רון ודנה" } },
+      { src: "images/carousel_7.webp", alt: { ru: "Рон и Дана", en: "Ron & Dana", he: "רון ודנה" } },
     ],
   },
 
@@ -470,7 +470,7 @@ const CONTENT = {
       directionsLabel: { ru: "Маршрут к отелю", en: "Directions to Hotel", he: "הוראות הגעה למלון" },
     },
     mapsEmbedUrl: "https://maps.google.com/maps?q=Castello+Petrata,+Localita+Petrata+22,+06081+Assisi+PG,+Italy&output=embed&z=14",
-    photo: "images/venue_wedding.jpg",
+    photo: "images/venue_wedding.webp",
   },
 
   /* ── Travel / Getting There ─────────────────────────────── */
@@ -616,7 +616,7 @@ const CONTENT = {
         en: "💡 Tip: when visiting historic towns, leave your car in a designated car park outside the ZTL and walk into the centre.",
         he: "💡 טיפ: בעת ביקור בעיירות היסטוריות, השאירו את הרכב בחניון מוסדר מחוץ לאזור ה-ZTL והיכנסו למרכז ברגל.",
       },
-      image: "images/ztl_sign.png",
+      image: "images/ztl_sign.webp",
       caption: {
         ru: "Типичный знак въезда в зону ZTL",
         en: "A typical ZTL entrance sign",

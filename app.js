@@ -536,9 +536,9 @@ function renderDetails() {
 
 /* ── Schedule ───────────────────────────────────────────────── */
 const OFFICIANT_IMAGES = [
-  'images/lee_rabbi.jpg',
-  'images/lee_v4.jpg',
-  'images/lee_sheikh.jpg'
+  'images/lee_rabbi.webp',
+  'images/lee_v4.webp',
+  'images/lee_sheikh.webp'
 ];
 let chosenOfficiantImage = null;
 

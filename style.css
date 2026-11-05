@@ -539,7 +539,7 @@ h1, h2, h3, h4 {
   text-align: center;
   overflow: hidden;
   background-color: #2a2622;
-  background-image: url('images/hero_bg.jpeg');
+  background-image: url('images/hero_bg.webp');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
@@ -823,7 +823,7 @@ h1, h2, h3, h4 {
   content: '';
   position: absolute;
   inset: 0;
-  background-image: url('images/watercolor_meadow_safe.jpg');
+  background-image: url('images/fields.webp');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
