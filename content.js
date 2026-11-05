@@ -371,6 +371,10 @@ const CONTENT = {
         name: { ru: "Фисташковый", en: "Pale Pistachio", he: "ירוק פיסטוק" },
         hex: "#C8DBBC",
       },
+      {
+        name: { ru: "Сиреневый", en: "Purple", he: "סגול" },
+        hex: "#D8C2E8",
+      },
     ],
     reservedTitle: {
       ru: "Зарезервированные цвета",
@@ -626,18 +630,6 @@ const CONTENT = {
         ru: "Типичный знак въезда в зону ZTL",
         en: "A typical ZTL entrance sign",
         he: "שלט כניסה טיפוסי לאזור ZTL",
-      },
-    },
-    shuttleSection: {
-      title: {
-        ru: "🚌 Свадебные шаттлы",
-        en: "🚌 There will be shuttles",
-        he: "🚌 יהיו שאטלים",
-      },
-      text: {
-        ru: "Для гостей будут организованы свадебные шаттлы из Ассизи / Перуджи до места проведения и обратно. Вы можете указать ваши детали и пожелания непосредственно в форме RSVP.",
-        en: "There will be shuttles organized from Assisi / Perugia to the venue and back. You can indicate your preferences directly in the RSVP form.",
-        he: "יהיו שאטלים מאורגנים מאסיסי / פרוג'ה למקום האירוע ובחזרה. תוכלו לציין את העדפותיכם ישירות בטופס ה-RSVP.",
       },
     },
     appsSection: {

@@ -638,11 +638,10 @@ function renderAttire() {
       el.setAttribute('role', 'listitem');
 
       el.innerHTML = `
-        <div class="attire-swatch-circle" style="background-color: ${sw.hex};" title="${t(sw.name)} (${sw.hex})">
+        <div class="attire-swatch-circle" style="background-color: ${sw.hex};" title="${t(sw.name)}">
           <span class="attire-swatch-check" aria-hidden="true">✓</span>
         </div>
         <span class="attire-swatch-name">${t(sw.name)}</span>
-        <span class="attire-swatch-hex">${sw.hex}</span>
       `;
       swatchesGrid.appendChild(el);
     });
@@ -835,16 +834,6 @@ function renderTravel() {
     <div class="travel-chips">${coachChips}</div>
   `;
   container.appendChild(coachWrap);
-
-  // ── Shuttle ──────────────────────────────────────────────
-  const sh = travel.shuttleSection;
-  const shuttleWrap = document.createElement('div');
-  shuttleWrap.className = 'travel-section reveal visible';
-  shuttleWrap.innerHTML = `
-    <h3 class="travel-subtitle">${t(sh.title)}</h3>
-    <p class="travel-text">${t(sh.text)}</p>
-  `;
-  container.appendChild(shuttleWrap);
 
   // ── Car Rental ───────────────────────────────────────────
   const ca = travel.carSection;
