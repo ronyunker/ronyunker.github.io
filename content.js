@@ -125,9 +125,9 @@ const CONTENT = {
       {
         icon:  "💍",
         title: {
-          ru: "",
-          en: "",
-          he: "",
+          ru: "Воскресенье 23 – Свадебный день в Castello Petrata",
+          en: "Sunday 23 – Wedding Day at Castello Petrata",
+          he: "ראשון 23 – יום החתונה בקסטלו פטרטה",
         },
         lines: {
           ru: [

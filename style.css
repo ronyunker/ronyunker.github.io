@@ -2432,6 +2432,10 @@ h1, h2, h3, h4 {
     outline-offset: -6px;
   }
 
+  .detail-card::before {
+    background-position: center bottom;
+  }
+
   /* Gallery Carousel */
   .section-gallery {
     padding: var(--space-lg) 0;
