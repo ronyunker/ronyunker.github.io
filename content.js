@@ -244,9 +244,9 @@ const CONTENT = {
           he: "ארוחת ערב",
         },
         note:  {
-          ru: "Ужин из трех блюд: ризотто, паста, основное блюдо",
-          en: "Three course dinner: Risotto, Pasta, Main course",
-          he: "ארוחת שלוש מנות: ראשונה-ריזוטו, שנייה-פסטה, מנה עיקרית",
+          ru: "Ужин из трех блюд: ризотто, паста, основное блюдо, свадебный торт и десерты",
+          en: "Three course dinner: Risotto, Pasta, Main course, Wedding cake and Desserts",
+          he: "ארוחת שלוש מנות: ראשונה-ריזוטו, שנייה-פסטה, מנה עיקרית, עוגת חתונה וקינוחים",
         },
       },
       {
