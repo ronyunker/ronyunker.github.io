@@ -118,7 +118,7 @@ const CONTENT = {
           he: [
             "צ'ק-אין במלון Hotel Cenacolo (אסיסי) החל מ-<span class=\"detail-em\">14:00</span>",
             "קבלת חדרים והתמקמות האורחים במלון",
-            "Welcome Party - בופה פיצות ופסטות ואלכוהול",
+            "Welcome Party בשעה <span class=\"detail-em\">18:00</span> - בופה פיצות ופסטות ואלכוהול",
           ],
         },
       },
