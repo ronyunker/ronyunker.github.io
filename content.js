@@ -455,9 +455,9 @@ const CONTENT = {
         he: "Viale Patrono d'Italia 70, 06081 Santa Maria degli Angeli, Assisi (PG), איטליה",
       },
       note: {
-        ru: "Заезд: суббота 22 мая с 14:00 · Выезд: понедельник 24 мая до 10:00. Городской налог оплачивается гостями самостоятельно — 3 евро с человека за ночь!",
-        en: "Check-in: Saturday May 22 from 14:00 · Check-out: Monday May 24 by 10:00. city tax must be paid by the guests - 3 euro per person per night!",
-        he: "צ'ק-אין: שבת 22 במאי מ-14:00 · צ'ק-אאוט: שני 24 במאי עד 10:00. על האורחים לשלם את מס העיר בסך שלושה יורו לאדם לכל לילה!",
+        ru: "Заезд: суббота 22 мая с 14:00 · Выезд: понедельник 24 мая до 10:00. Городской налог оплачивается гостями самостоятельно — 4 евро с человека за ночь!",
+        en: "Check-in: Saturday May 22 from 14:00 · Check-out: Monday May 24 by 10:00. city tax must be paid by the guests - 4 euro per person per night!",
+        he: "צ'ק-אין: שבת 22 במאי מ-14:00 · צ'ק-אאוט: שני 24 במאי עד 10:00. על האורחים לשלם את מס העיר בסך ארבעה יורו לאדם לכל לילה!",
       },
       websiteUrl: "https://www.hotelcenacolo.com/",
       directionsUrl: "https://maps.google.com/?q=Hotel+Cenacolo+Viale+Patrono+d%27Italia+70+Assisi",
